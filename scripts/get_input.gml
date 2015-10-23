@@ -10,7 +10,7 @@ door = keyboard_check_pressed(vk_up);
 up = keyboard_check_pressed(vk_space);
 up_release = keyboard_check_released(vk_space);
 down = keyboard_check(vk_down);
-//pushing = keyboard_check(ord('X'));
+
 
 
 // Override the controls for a gamepad

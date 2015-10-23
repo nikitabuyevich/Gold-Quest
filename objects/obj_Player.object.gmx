@@ -3,7 +3,7 @@
   <spriteName>spr_player_idle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_player_mask</maskName>
@@ -28,22 +28,25 @@
             <string>/// Initialize the player object
 
 //CONSTANT VARIABLES
-maxSpd = 2; //maximum speed possible
+maxSpd = 1.75; //maximum speed possible
 accel = 0.25; //acceleration
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
-grav = 0.25; //gravity speed
-maxJumpH = -4; //maximum jump height
+grav = 0.15; //gravity speed
+maxJumpH = -3; //maximum jump height
 initialJumpH = -2; // initial jump height
 godmode = 0; // blink mode when hit
 rollDist = 5; // the distance to roll
 global.blockPushSpeed = 0.8; //how fast player pushes with a block
+global.attackspeed = 0.25; // players attack speed
 
 
 // Control variables
 rolledOnce = false; // forces to commit to roll
 rolledDamage = false; // used to only get once damage when rolling
 inLedgeGrab = false; // determines if in ledge grab state
+attacking = false; // controls whether attacking or not
+attackedOnce = false; // number of times attacked
 
 //Scripts
 state = move_state;
@@ -85,6 +88,82 @@ script_execute(state);
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///attack animation
+
+if (!attacking &amp;&amp; !attackedOnce) {
+    image_speed = global.attackspeed;
+    image_index = 0;
+    sprite_index = spr_player_attack_a;
+    attacking = true;
+
+    with (instance_create(x, y, obj_PlayerAttackA)){
+        image_xscale = obj_Player.image_xscale;
+    }
+    
+    attackedOnce = true; // Go to the holding attack state
+    
+}
+
+if (!attacking &amp;&amp; attackedOnce) {
+    image_speed = global.attackspeed;
+    image_index = 0;
+    sprite_index = spr_player_attack_b;
+    attacking = true;
+
+    with (instance_create(x, y, obj_PlayerAttackB)){
+        image_xscale = obj_Player.image_xscale;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Change states when animation ends
+
+// change back to move state when animation ends
+if (attacking){
+    attacking = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="9" enumb="82">
       <action>
         <libid>1</libid>
@@ -105,6 +184,31 @@ script_execute(state);
             <string>/// Restart the level
 
 room_restart();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Set attackedOnce to false again
+
+attackedOnce = false;
 </string>
           </argument>
         </arguments>
