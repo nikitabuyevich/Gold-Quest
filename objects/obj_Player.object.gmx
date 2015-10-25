@@ -19,7 +19,7 @@
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -32,14 +32,14 @@ maxSpd = 1.75; //maximum speed possible
 accel = 0.25; //acceleration
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
-grav = 0.15; //gravity speed
+global.grav = 0.15; //gravity speed
 maxJumpH = -3; //maximum jump height
 initialJumpH = -2; // initial jump height
 godmode = 0; // blink mode when hit
-rollDist = 5; // the distance to roll
+global.rollDist = 2.5; // the distance to roll
 global.blockPushSpeed = 0.8; //how fast player pushes with a block
 global.attackspeed = 0.25; // players attack speed
-
+global.test = false;
 
 // Control variables
 rolledOnce = false; // forces to commit to roll
@@ -47,6 +47,8 @@ rolledDamage = false; // used to only get once damage when rolling
 inLedgeGrab = false; // determines if in ledge grab state
 attacking = false; // controls whether attacking or not
 attackedOnce = false; // number of times attacked
+rolling = false; // remembers whether rolls or not
+pushing = false; // checks whether in pushing state or not
 
 //Scripts
 state = move_state;
@@ -83,6 +85,10 @@ get_input();
 
 //execute state
 script_execute(state);
+
+if (obj_Player.sprite_index != spr_player_push){
+    global.test = false;
+}
 </string>
           </argument>
         </arguments>
@@ -108,10 +114,11 @@ script_execute(state);
             <string>///attack animation
 
 if (!attacking &amp;&amp; !attackedOnce) {
+    attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
     sprite_index = spr_player_attack_a;
-    attacking = true;
+    
 
     with (instance_create(x, y, obj_PlayerAttackA)){
         image_xscale = obj_Player.image_xscale;
@@ -122,10 +129,11 @@ if (!attacking &amp;&amp; !attackedOnce) {
 }
 
 if (!attacking &amp;&amp; attackedOnce) {
+    attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
     sprite_index = spr_player_attack_b;
-    attacking = true;
+    
 
     with (instance_create(x, y, obj_PlayerAttackB)){
         image_xscale = obj_Player.image_xscale;
@@ -156,8 +164,17 @@ if (!attacking &amp;&amp; attackedOnce) {
             <string>/// Change states when animation ends
 
 // change back to move state when animation ends
+
 if (attacking){
     attacking = false;
+}
+
+if (rolling) {
+    rolling = false;
+}
+
+if (global.test) {
+    global.test = false;
 }
 </string>
           </argument>
@@ -184,6 +201,40 @@ if (attacking){
             <string>/// Restart the level
 
 room_restart();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Initialize roll
+
+if (!rolling &amp;&amp; vSpd == 0) {
+    image_speed = 0.2;
+    image_index = 0;
+    sprite_index = spr_player_roll;
+    
+    //roll at the desired speed
+    hSpd = image_xscale*global.rollDist; 
+    
+    rolling = true; // rolled
+}
 </string>
           </argument>
         </arguments>

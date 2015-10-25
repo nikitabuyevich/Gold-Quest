@@ -18,6 +18,9 @@
       <sprite>sprites\spr_player_attack_a_INVIS</sprite>
       <sprite>sprites\spr_player_attack_b</sprite>
       <sprite>sprites\spr_player_attack_b_INVIS</sprite>
+      <sprite>sprites\spr_player_jump</sprite>
+      <sprite>sprites\spr_player_roll</sprite>
+      <sprite>sprites\spr_player_push</sprite>
     </sprites>
     <sprites name="Level">
       <sprite>sprites\spr_inherit_solid</sprite>

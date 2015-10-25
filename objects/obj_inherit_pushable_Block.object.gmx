@@ -25,13 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize the player object
+            <string>/// Initialize the block object
 
 //CONSTANT VARIABLES
-maxSpd = 2; //maximum speed possible //acceleration
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
-grav = 0.25; //gravity speed
 </string>
           </argument>
         </arguments>
@@ -54,7 +52,7 @@ grav = 0.25; //gravity speed
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// scr_move(collision_object)
+            <string>/// Make the object not collide
 /*
 Moves the player accordingly. If theres a wall, it will get
 as close as possible towards it.
@@ -62,7 +60,7 @@ as close as possible towards it.
 
 // Implementing gravity
 if (!place_meeting(x, y+1, obj_inherit_Solid)){
-    vSpd += grav;
+    vSpd += global.grav;
 }
 
 // Horizontal Collisions
