@@ -5,11 +5,19 @@ Main part of the whole program. This is the state the players at most of the tim
 you should be checking things regularly.
 */
 
+// Control variables with sprite_index
+if (obj_Player.sprite_index != spr_player_push){
+    pushing = false;
+}
 
 // Move character based on keyboard arrows
 // and check for walls
 if ((right || left) && !rolling) {
-    hSpd += (right-left)*accel;
+    
+    if (!pushing)
+        hSpd += (right-left)*global.accel;
+    else
+        hSpd = ((right-left)*maxSpd*global.blockPushSpeed);
     
     if (hSpd > maxSpd)
         hSpd = maxSpd;
@@ -17,7 +25,7 @@ if ((right || left) && !rolling) {
     if (hSpd < -maxSpd)
         hSpd = -maxSpd;
 } else if (!rolling) {
-    apply_friction(accel);
+    apply_friction(global.accel);
 }
 
 // Implementing gravity

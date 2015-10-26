@@ -3,8 +3,8 @@
   <caption></caption>
   <width>768</width>
   <height>432</height>
-  <vsnap>1</vsnap>
-  <hsnap>1</hsnap>
+  <vsnap>10</vsnap>
+  <hsnap>10</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -192,11 +192,6 @@
     <instance objName="obj_inherit_Solid" x="650" y="430" name="inst_27C34B83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inherit_Solid" x="630" y="430" name="inst_2181473E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inherit_Solid" x="610" y="430" name="inst_4B7EE6AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_inherit_Solid" x="590" y="430" name="inst_EC866AA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_inherit_Solid" x="570" y="430" name="inst_26B6E39A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_inherit_Solid" x="550" y="430" name="inst_C0E1C638" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_inherit_Solid" x="530" y="430" name="inst_46054CDB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_inherit_Solid" x="510" y="430" name="inst_BE11D753" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inherit_Solid" x="490" y="430" name="inst_3305D8CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inherit_Solid" x="470" y="430" name="inst_B2A093A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inherit_Solid" x="450" y="430" name="inst_D58F3C71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -239,6 +234,20 @@
     <instance objName="obj_inherit_Solid" x="380" y="380" name="inst_BD1076F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_inherit_Solid" x="390" y="380" name="inst_526572B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Enemy" x="459" y="378" name="inst_0A805CFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Ladder" x="556" y="399" name="inst_E6C9EA87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_inherit_Solid" x="530" y="390" name="inst_19B2EA67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_inherit_Solid" x="550" y="390" name="inst_FBD0CBFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_inherit_Solid" x="570" y="390" name="inst_A742620D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Ladder" x="650" y="390" name="inst_ACFE623D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="510" y="430" name="inst_5BD5F86E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="520" y="430" name="inst_24990050" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="530" y="430" name="inst_AFE8354C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="540" y="430" name="inst_F8187483" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="550" y="430" name="inst_0B440F71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="560" y="430" name="inst_A9029517" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="570" y="430" name="inst_C5301F81" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="580" y="430" name="inst_DC3D6785" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_edge_Solid" x="590" y="430" name="inst_21E4CCC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="0" y="400" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_D8B31D47" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

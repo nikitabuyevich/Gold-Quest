@@ -1,11 +1,11 @@
 /// scr_push
 
 // Horizontal push
-if (place_meeting(x+(hSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block)) {
+if (place_meeting(x+((right-left)*maxSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block)) {
     
-    if (!global.test){
-        global.test = true;
-        image_speed = 0.15;
+    if (!pushing){
+        pushing = true;
+        image_speed = 0.2;
         image_index = 0;
         
     }
@@ -13,11 +13,11 @@ if (place_meeting(x+(hSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block)
     
     
 
-    var block = instance_place(x+(hSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block);
+    var block = instance_place(x+((right-left)*maxSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block);
     with (block){
-        scr_move(obj_Player.hSpd*global.blockPushSpeed, 0);
+        scr_move(obj_Player.hSpd, 0);
     }
     
-    hSpd = (hSpd*global.blockPushSpeed);
     
-}
+}  
+

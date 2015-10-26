@@ -27,21 +27,25 @@
             <kind>1</kind>
             <string>/// Initialize the player object
 
-//CONSTANT VARIABLES
+//     &lt;-- CONSTANT VARIABLES --&gt;
+
+// Global movement variables
+global.accel = 0.135; //acceleration
+global.grav = 0.15; //gravity speed
+
+// Player attributes
 maxSpd = 1.75; //maximum speed possible
-accel = 0.25; //acceleration
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
-global.grav = 0.15; //gravity speed
 maxJumpH = -3; //maximum jump height
 initialJumpH = -2; // initial jump height
-godmode = 0; // blink mode when hit
 global.rollDist = 2.5; // the distance to roll
-global.blockPushSpeed = 0.8; //how fast player pushes with a block
+global.blockPushSpeed = 0.6; //how fast player pushes with a block
 global.attackspeed = 0.25; // players attack speed
-global.test = false;
+global.ladderClimbAccelSpd = 0.05; // how fast player begins to climb
+global.ladderClimbMaxSpd = 0.5; // max speed at which he climbs at
 
-// Control variables
+// Player control variables
 rolledOnce = false; // forces to commit to roll
 rolledDamage = false; // used to only get once damage when rolling
 inLedgeGrab = false; // determines if in ledge grab state
@@ -49,14 +53,14 @@ attacking = false; // controls whether attacking or not
 attackedOnce = false; // number of times attacked
 rolling = false; // remembers whether rolls or not
 pushing = false; // checks whether in pushing state or not
+onLadder = false; // checks whether in ladder state or not
+onLadderAnimation = false; // controls image_index reset
+onLadderAndSolid = false; // control ladder state
+playerYOnLadder = 0; // used for being able to go through the top blocks while on a ladder
+
 
 //Scripts
 state = move_state;
-
-// Create the audio emitter
-audio_em_1 = audio_emitter_create(); // damage
-audio_em_2 = audio_emitter_create(); // landing
-audio_em_3 = audio_emitter_create(); // shooting
 
 </string>
           </argument>
@@ -86,8 +90,35 @@ get_input();
 //execute state
 script_execute(state);
 
-if (obj_Player.sprite_index != spr_player_push){
-    global.test = false;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Ladder">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// enemy is on the ladder
+
+// player decides to get on ladder
+if (interact){
+    obj_Player.state = ladder_state;
+    playerYOnLadder = obj_Player.y;
 }
 </string>
           </argument>
@@ -113,7 +144,7 @@ if (obj_Player.sprite_index != spr_player_push){
             <kind>1</kind>
             <string>///attack animation
 
-if (!attacking &amp;&amp; !attackedOnce) {
+if (!attacking &amp;&amp; !attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) {
     attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
@@ -128,7 +159,7 @@ if (!attacking &amp;&amp; !attackedOnce) {
     
 }
 
-if (!attacking &amp;&amp; attackedOnce) {
+if (!attacking &amp;&amp; attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) {
     attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
@@ -171,10 +202,6 @@ if (attacking){
 
 if (rolling) {
     rolling = false;
-}
-
-if (global.test) {
-    global.test = false;
 }
 </string>
           </argument>

@@ -21,10 +21,13 @@
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_roll</sprite>
       <sprite>sprites\spr_player_push</sprite>
+      <sprite>sprites\spr_player_ladder</sprite>
     </sprites>
     <sprites name="Level">
       <sprite>sprites\spr_inherit_solid</sprite>
       <sprite>sprites\spr_block</sprite>
+      <sprite>sprites\spr_ladder</sprite>
+      <sprite>sprites\spr_edge_Solid</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy</sprite>
@@ -38,11 +41,13 @@
     <scripts name="Helper Scripts">
       <script>scripts\scr_move.gml</script>
       <script>scripts\apply_friction.gml</script>
+      <script>scripts\apply_friction_vertical.gml</script>
       <script>scripts\get_input.gml</script>
       <script>scripts\scr_push.gml</script>
     </scripts>
     <scripts name="Player States">
       <script>scripts\move_state.gml</script>
+      <script>scripts\ladder_state.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -59,6 +64,8 @@
       <object>objects\obj_inherit_Solid</object>
       <object>objects\obj_inherit_pushable_Block</object>
       <object>objects\obj_Background</object>
+      <object>objects\obj_Ladder</object>
+      <object>objects\obj_edge_Solid</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_Enemy</object>
