@@ -8,7 +8,7 @@ var amount = argument0;
 var directionCorrected = sign(hSpd);
 
 if (hSpd != 0) {
-    if (abs(hSpd)-amount > 0) {
+    if (abs(hSpd)-amount > 0 && !attacking) {
         hSpd -= amount*directionCorrected;
     } else {
         hSpd = 0;

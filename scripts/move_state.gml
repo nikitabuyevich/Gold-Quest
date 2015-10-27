@@ -14,6 +14,15 @@ if (sprite_index != spr_player_jump){
     alarmStarted = false;
 }
 
+// Player is crouching
+if (stayCrouched || (down && !attacking && !rolling && !left && !right)){
+    hSpd = 0;
+    crouching = true;
+    mask_index = spr_player_mask_crouch; // change to crouch mask
+    sprite_index = spr_player_crouch;
+} else if (!rolling)
+    default_mask();
+
 // Move character based on keyboard arrows
 // and check for walls
 if ((right || left) && !rolling) {
@@ -80,33 +89,32 @@ if (!place_meeting(x, y+1, obj_inherit_Solid)){ // if we're in the air
             
             // Player on the ground
             if (hSpd == 0){
-                image_speed = 0.1;
-                if (sprite_index != spr_player_idle && !pushing)
-                    image_index = 0;
-                sprite_index = spr_player_idle;
-                
-                
+                if (!crouching){
+                    image_speed = 0.1;
+                    if (sprite_index != spr_player_idle && !pushing)
+                        image_index = 0;
+                    sprite_index = spr_player_idle;
+                }
             }
             else {
                 image_speed = 0.2;
                 if (sprite_index != spr_player_walk && !pushing)
                     image_index = 0;
                 sprite_index = spr_player_walk;
-            }
-        } else // if we're attacking, stop movemenmt
-            hSpd = 0;
+            } 
+        } 
     }
 } 
 
 
 //flip character depending which was he's facing
-if ((hSpd != 0) && ((right-left) != 0) && !attacking && !rolling) {
+if ((hSpd != 0) && ((right-left) != 0) && !rolling) {
     image_xscale = sign(right-left);
 }
 
 //scr_landing_sound(); //play landing sound
 
-if (!rolling)
+if (!rolling && !attacking)
     scr_push();
 
 scr_move(hSpd, vSpd); // make sure theres no collisions

@@ -4,3 +4,9 @@
 - Rolling
 - Climbing on ladders
 - Gamepad support
+
+## Instructions:
+- Move with Arrow Keys
+- Press E to get on ladders
+- Press X to attack with sword
+- Press C to roll

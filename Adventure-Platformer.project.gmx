@@ -11,17 +11,27 @@
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
+      <sprite>sprites\spr_player_crouch</sprite>
       <sprite>sprites\spr_player_idle</sprite>
-      <sprite>sprites\spr_player_mask</sprite>
       <sprite>sprites\spr_player_walk</sprite>
-      <sprite>sprites\spr_player_attack_a</sprite>
-      <sprite>sprites\spr_player_attack_a_INVIS</sprite>
-      <sprite>sprites\spr_player_attack_b</sprite>
-      <sprite>sprites\spr_player_attack_b_INVIS</sprite>
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_roll</sprite>
       <sprite>sprites\spr_player_push</sprite>
       <sprite>sprites\spr_player_ladder</sprite>
+      <sprites name="Sword Attack">
+        <sprite>sprites\spr_player_attack_a_idle</sprite>
+        <sprite>sprites\spr_player_attack_a_idle_INVIS</sprite>
+        <sprite>sprites\spr_player_attack_b_idle_INVIS</sprite>
+        <sprite>sprites\spr_player_attack_b_idle</sprite>
+        <sprite>sprites\spr_player_attack_a_walk</sprite>
+        <sprite>sprites\spr_player_attack_a_walk_INVIS</sprite>
+        <sprite>sprites\spr_player_attack_b_walk</sprite>
+        <sprite>sprites\spr_player_attack_b_walk_INVIS</sprite>
+      </sprites>
+      <sprites name="Masks">
+        <sprite>sprites\spr_player_mask</sprite>
+        <sprite>sprites\spr_player_mask_crouch</sprite>
+      </sprites>
     </sprites>
     <sprites name="Level">
       <sprite>sprites\spr_inherit_solid</sprite>
@@ -44,6 +54,7 @@
       <script>scripts\apply_friction_vertical.gml</script>
       <script>scripts\get_input.gml</script>
       <script>scripts\scr_push.gml</script>
+      <script>scripts\default_mask.gml</script>
     </scripts>
     <scripts name="Player States">
       <script>scripts\move_state.gml</script>

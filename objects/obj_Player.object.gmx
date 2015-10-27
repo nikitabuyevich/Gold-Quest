@@ -34,14 +34,14 @@ global.accel = 0.135; //acceleration
 global.grav = 0.15; //gravity speed
 
 // Player attributes
-maxSpd = 1.75; //maximum speed possible
+maxSpd = 1; //maximum speed possible
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
 maxJumpH = -3; //maximum jump height
 initialJumpH = -1.5; // initial jump height
-global.rollDist = 2.5; // the distance to roll
-global.blockPushSpeed = 0.6; //how fast player pushes with a block
-global.attackspeed = 0.25; // players attack speed
+global.rollDist = 2; // the distance to roll
+global.blockPushSpeed = 1; //how fast player pushes with a block
+global.attackspeed = 0.2; // players attack speed
 global.ladderClimbAccelSpd = 0.05; // how fast player begins to climb
 global.ladderClimbMaxSpd = 0.5; // max speed at which he climbs at
 
@@ -57,6 +57,8 @@ onLadder = false; // checks whether in ladder state or not
 onLadderAnimation = false; // controls image_index reset
 onLadderAndSolid = false; // control ladder state
 alarmStarted = false; // controls jump animation
+crouching = false; // makes sure to not go into idle animation
+stayCrouched = false; // used for safety of mask switching
 
 //Scripts
 state = move_state;
@@ -166,11 +168,18 @@ if (interact){
             <kind>1</kind>
             <string>///attack animation
 
+// make sure player stops instantly when horizontal speed is 0
+if (sprite_index == spr_player_attack_b_walk &amp;&amp; hSpd == 0)
+    sprite_index = spr_player_attack_b_idle;
+
 if (!attacking &amp;&amp; !attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) {
     attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
-    sprite_index = spr_player_attack_a;
+    if (hSpd == 0)
+        sprite_index = spr_player_attack_a_idle;
+    else
+        sprite_index = spr_player_attack_a_walk;
     
 
     with (instance_create(x, y, obj_PlayerAttackA)){
@@ -185,13 +194,39 @@ if (!attacking &amp;&amp; attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) 
     attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
-    sprite_index = spr_player_attack_b;
+    if (hSpd == 0)
+        sprite_index = spr_player_attack_b_idle;
+    else
+        sprite_index = spr_player_attack_b_walk;
     
 
     with (instance_create(x, y, obj_PlayerAttackB)){
         image_xscale = obj_Player.image_xscale;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>score += 100;
 </string>
           </argument>
         </arguments>
@@ -218,13 +253,16 @@ if (!attacking &amp;&amp; attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) 
 
 // change back to move state when animation ends
 
-if (attacking){
+if (attacking)
     attacking = false;
-}
 
-if (rolling) {
+
+if (rolling) 
     rolling = false;
-}
+
+
+if (crouching)
+    crouching = false;
 </string>
           </argument>
         </arguments>
@@ -277,13 +315,15 @@ room_restart();
 if (!rolling &amp;&amp; vSpd == 0) {
     image_speed = 0.2;
     image_index = 0;
+    mask_index = spr_player_mask_crouch; // change to crouch mask
     sprite_index = spr_player_roll;
     
     //roll at the desired speed
     hSpd = image_xscale*global.rollDist; 
     
     rolling = true; // rolled
-}
+} else
+    default_mask();
 </string>
           </argument>
         </arguments>
@@ -309,6 +349,10 @@ if (!rolling &amp;&amp; vSpd == 0) {
             <string>/// Set attackedOnce to false again
 
 attackedOnce = false;
+
+// if theres a push block in front of me, go into pushing state instantly
+if (place_meeting(x+((right-left)*maxSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block))
+    attacking = false;
 </string>
           </argument>
         </arguments>
