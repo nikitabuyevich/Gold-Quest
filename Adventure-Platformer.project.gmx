@@ -48,6 +48,7 @@
     <scripts name="Player States">
       <script>scripts\move_state.gml</script>
       <script>scripts\ladder_state.gml</script>
+      <script>scripts\free_fall_state.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

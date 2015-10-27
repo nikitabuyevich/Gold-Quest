@@ -8,7 +8,7 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>6</bbox_left>
-  <bbox_right>14</bbox_right>
+  <bbox_right>15</bbox_right>
   <bbox_top>8</bbox_top>
   <bbox_bottom>18</bbox_bottom>
   <HTile>0</HTile>
@@ -22,5 +22,6 @@
   <frames>
     <frame index="0">images\spr_player_jump_0.png</frame>
     <frame index="1">images\spr_player_jump_1.png</frame>
+    <frame index="2">images\spr_player_jump_2.png</frame>
   </frames>
 </sprite>

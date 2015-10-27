@@ -6,8 +6,12 @@ you should be checking things regularly.
 */
 
 // Control variables with sprite_index
-if (obj_Player.sprite_index != spr_player_push){
+if (sprite_index != spr_player_push){
     pushing = false;
+}
+
+if (sprite_index != spr_player_jump){
+    alarmStarted = false;
 }
 
 // Move character based on keyboard arrows
@@ -35,14 +39,31 @@ if (!place_meeting(x, y+1, obj_inherit_Solid)){ // if we're in the air
     if (!rolling){
         if (!attacking){
             // Player is in the air
+            image_speed = 0;              
             sprite_index = spr_player_jump;
-            image_speed = 0;
-            image_index = (vSpd > 0);
+            if (!alarmStarted){ 
+                alarm[0] = room_speed/9; // controls frame speed
+                alarmStarted = true;
+            }
+            if (vSpd < 0){
+                image_index = 0;
+                if (alarm[0] <= 0){
+                    image_index = 1; // with initial jump, go only to frames 1 to 2
+                }
+            } else
+                image_index = 2;
         }
         
         // Control the jump height
         if (up_release && vSpd < initialJumpH) {
-            vSpd = initialJumpH;
+        
+            if (place_meeting(x, y+vSpd, obj_inherit_Solid)){
+                while (!place_meeting(x, y+sign(vSpd), obj_inherit_Solid)){
+                    y += sign(vSpd);
+                }
+                vSpd = 0;
+            } else
+                vSpd = initialJumpH;
         }
     }
     
@@ -52,28 +73,30 @@ if (!place_meeting(x, y+1, obj_inherit_Solid)){ // if we're in the air
             vSpd = 0;
             
             // Jumping
-            if (up) {
-                vSpd = maxJumpH;    
-                //audio_play_sound(snd_jump, 5, false);
+            if (up) { 
+                vSpd = maxJumpH;
+                    //audio_play_sound(snd_jump, 5, false);
             }
             
             // Player on the ground
             if (hSpd == 0){
                 image_speed = 0.1;
+                if (sprite_index != spr_player_idle && !pushing)
+                    image_index = 0;
                 sprite_index = spr_player_idle;
                 
                 
             }
             else {
                 image_speed = 0.2;
+                if (sprite_index != spr_player_walk && !pushing)
+                    image_index = 0;
                 sprite_index = spr_player_walk;
             }
         } else // if we're attacking, stop movemenmt
             hSpd = 0;
     }
 } 
-
-
 
 
 //flip character depending which was he's facing

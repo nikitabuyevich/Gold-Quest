@@ -38,7 +38,7 @@ maxSpd = 1.75; //maximum speed possible
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
 maxJumpH = -3; //maximum jump height
-initialJumpH = -2; // initial jump height
+initialJumpH = -1.5; // initial jump height
 global.rollDist = 2.5; // the distance to roll
 global.blockPushSpeed = 0.6; //how fast player pushes with a block
 global.attackspeed = 0.25; // players attack speed
@@ -56,12 +56,34 @@ pushing = false; // checks whether in pushing state or not
 onLadder = false; // checks whether in ladder state or not
 onLadderAnimation = false; // controls image_index reset
 onLadderAndSolid = false; // control ladder state
-playerYOnLadder = 0; // used for being able to go through the top blocks while on a ladder
-
+alarmStarted = false; // controls jump animation
 
 //Scripts
 state = move_state;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// used to control jump animation
 </string>
           </argument>
         </arguments>

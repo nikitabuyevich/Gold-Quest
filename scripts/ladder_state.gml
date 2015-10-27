@@ -5,10 +5,25 @@ Player can press up to get on a ladder, and move up and down.
 He can jump off whenever he wants to
 */
 
+sprite_index = spr_player_ladder;
+
+// stop animation when player stops moving
+if (vSpd == 0)
+    image_speed = 0;
+else
+    image_speed = 0.1;
+
 // if we're not on the ladder, get out of the state
 if (!place_meeting(x, y, obj_Ladder))
     state = move_state;
 
+hSpd = 0; // don't have any initial horizontal movement speed
+    
+if (up || up_release){ 
+    //vSpd = initialJumpH;
+    state = free_fall_state;
+}    
+    
 var thisLadder = instance_place(x, y, obj_Ladder);    
 
 
@@ -45,7 +60,9 @@ if (place_meeting(x, y+vSpd, obj_edge_Solid)){
 }
 y += vSpd;
 
-sprite_index = spr_player_ladder;
+
+
+
 
     
     
