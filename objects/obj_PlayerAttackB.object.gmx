@@ -60,7 +60,7 @@ y = obj_Player.y;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_Enemy">
+    <event eventtype="4" ename="obj_EnemyParent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -84,6 +84,8 @@ y = obj_Player.y;
 if ((image_index == 0 || image_index == 1 || image_index == 2) &amp;&amp; !hit){
     hit = true; //used to make hit on the first attack
     score += 10;  
+    with (other)
+        hp--; // decrease life by 1;
     audio_emit = audio_emitter_create();
     audio_emitter_gain(audio_emit, 0.10);
     audio_emitter_pitch(audio_emit, 1);
@@ -93,6 +95,8 @@ if ((image_index == 0 || image_index == 1 || image_index == 2) &amp;&amp; !hit){
 if ((image_index == 3 || image_index == 4 || image_index == 5 || image_index == 6) &amp;&amp; !hit2){
     hit2 = true; //used to make hit on the second attack
     score += 10;  
+    with (other)
+        hp--; // decrease life by 1;
     audio_emit = audio_emitter_create();
     audio_emitter_gain(audio_emit, 0.10);
     audio_emitter_pitch(audio_emit, 1);

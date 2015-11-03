@@ -28,7 +28,39 @@
             <string>/// Intialize the player stats object
 display_set_gui_size(view_wview[0], view_hview[0]);
 
-debug = true; //run debug
+debug = false; //run debug
+
+// Initialize player variables
+hp = 8;
+maxhp = 8;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// check player stats and so something about them
+
+// Players dead
+if (hp &lt;= 0){
+    game_restart();
+}
 </string>
           </argument>
         </arguments>
@@ -55,12 +87,35 @@ debug = true; //run debug
 switch (room) {      
                
     default:
-       
+    
+        // Draw player healthbar
+            for (var i=0; i &lt; maxhp/2; i++) {
+                draw_sprite_ext(spr_heart_full, 0, 12+i*15, 20, 1, 1, 0, c_black, 1);
+            }
+            
+            // Draw the hearts
+            
+            // Draw the half hearts
+            for (var i=0; ((i &lt; hp/2) ); i++) {
+                draw_sprite_ext(spr_heart_half, 0, 12+i*15, 20, 1, 1, 0, c_white, 1);
+            }
+            
+            // Draw the full hearts
+            for (var i=0; ((i &lt; (hp/2 - 1))); i++) {    
+                    draw_sprite_ext(spr_heart_full, 0, 12+i*15, 20, 1, 1, 0, c_white, 1);
+            }
+            
+            // Draw the full hearts
+            for (var i=0; ((i &lt; hp/2) &amp;&amp; hp%2==0); i++) {    
+                    draw_sprite_ext(spr_heart_full, 0, 12+i*15, 20, 1, 1, 0, c_white, 1);
+            }
+        
+    
         if (debug){
             draw_set_font(fnt_debug);
             draw_text_colour(view_wview[0]/2, 10, "hSpd =:" +string(obj_Player.hSpd), c_lime, c_lime, c_lime, c_lime, 1);   
             draw_text_colour(view_wview[0]/2, 20, "vSpd =:" +string(obj_Player.vSpd), c_lime, c_lime, c_lime, c_lime, 1);   
-            draw_text_colour(view_wview[0]/2, 30, "mask =:" +string(obj_Player.mask_index), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 30, "hp =:" +string(hp), c_lime, c_lime, c_lime, c_lime, 1);   
             draw_text_colour(view_wview[0]/2, 40, "score =:" +string(obj_Player.score), c_lime, c_lime, c_lime, c_lime, 1);   
 
          } 
@@ -70,6 +125,29 @@ switch (room) {
         break;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hp--;
 </string>
           </argument>
         </arguments>

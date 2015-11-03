@@ -3,6 +3,9 @@
 - Sword attacks
 - Rolling
 - Climbing on ladders
+- Ledge Grabing
+- Customizable Controls
+- Interactive Mennus
 - Gamepad support
 
 ## Instructions:

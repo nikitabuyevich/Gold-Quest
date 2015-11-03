@@ -15,7 +15,7 @@ if (sprite_index != spr_player_jump){
 }
 
 // Player is crouching
-if (stayCrouched || (down && !attacking && !rolling && !left && !right)){
+if (stayCrouched || (global.down && !attacking && !rolling && !global.left && !global.right)){
     hSpd = 0;
     crouching = true;
     mask_index = spr_player_mask_crouch; // change to crouch mask
@@ -25,12 +25,12 @@ if (stayCrouched || (down && !attacking && !rolling && !left && !right)){
 
 // Move character based on keyboard arrows
 // and check for walls
-if ((right || left) && !rolling) {
+if ((global.right || global.left) && !rolling) {
     
     if (!pushing)
-        hSpd += (right-left)*global.accel;
+        hSpd += (global.right-global.left)*global.accel;
     else
-        hSpd = ((right-left)*maxSpd*global.blockPushSpeed);
+        hSpd = ((global.right-global.left)*maxSpd*global.blockPushSpeed);
     
     if (hSpd > maxSpd)
         hSpd = maxSpd;
@@ -42,7 +42,7 @@ if ((right || left) && !rolling) {
 }
 
 // Implementing gravity
-if (!place_meeting(x, y+1, obj_inherit_Solid)){ // if we're in the air
+if (!place_meeting(x, y+1, obj_parentSolid)){ // if we're in the air
     vSpd += global.grav;
     
     if (!rolling){
@@ -64,10 +64,10 @@ if (!place_meeting(x, y+1, obj_inherit_Solid)){ // if we're in the air
         }
         
         // Control the jump height
-        if (up_release && vSpd < initialJumpH) {
+        if (global.up_release && vSpd < initialJumpH) {
         
-            if (place_meeting(x, y+vSpd, obj_inherit_Solid)){
-                while (!place_meeting(x, y+sign(vSpd), obj_inherit_Solid)){
+            if (place_meeting(x, y+vSpd, obj_parentSolid)){
+                while (!place_meeting(x, y+sign(vSpd), obj_parentSolid)){
                     y += sign(vSpd);
                 }
                 vSpd = 0;
@@ -82,7 +82,7 @@ if (!place_meeting(x, y+1, obj_inherit_Solid)){ // if we're in the air
             vSpd = 0;
             
             // Jumping
-            if (up) { 
+            if (global.up) { 
                 vSpd = maxJumpH;
                     //audio_play_sound(snd_jump, 5, false);
             }
@@ -108,8 +108,8 @@ if (!place_meeting(x, y+1, obj_inherit_Solid)){ // if we're in the air
 
 
 //flip character depending which was he's facing
-if ((hSpd != 0) && ((right-left) != 0) && !rolling) {
-    image_xscale = sign(right-left);
+if ((hSpd != 0) && ((global.right-global.left) != 0) && !rolling) {
+    image_xscale = sign(global.right-global.left);
 }
 
 //scr_landing_sound(); //play landing sound
@@ -118,3 +118,34 @@ if (!rolling && !attacking)
     scr_push();
 
 scr_move(hSpd, vSpd); // make sure theres no collisions
+
+// Check for ledge grab state
+var falling = y-yprevious > 0;
+var wasnt_wall = !position_meeting(x+5*image_xscale, yprevious, obj_parentSolid);
+var is_wall = position_meeting(x+5*image_xscale, y, obj_parentSolid);
+var noPushableBlock = !position_meeting(x+5*image_xscale, y, obj_parentPushableBlock);
+
+if (falling && wasnt_wall && is_wall && noPushableBlock) {
+    hSpd = 0;
+    vSpd = 0;
+    
+    // Move against the ledge
+    while (!place_meeting(x+image_xscale*0.5, y, obj_parentSolid)){
+        x += image_xscale*0.5;
+    }
+    
+    // Make sure we are the right height
+    while (position_meeting(x+5*image_xscale, y-1, obj_parentSolid)){
+        y -= 1;
+    }
+    
+    //sprite_index = spr_player_ledge_grab;
+    state = ledge_grab_state;
+    
+    /*
+    // Play the ledge grab sound
+    audio_emitter_pitch(audio_em, 1.5);
+    audio_emitter_gain(audio_em, 0.1);
+    audio_play_sound_on(audio_em, snd_step, false, 6);
+    */
+}

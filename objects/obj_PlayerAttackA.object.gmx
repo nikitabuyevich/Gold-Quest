@@ -59,7 +59,7 @@ y = obj_Player.y;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_Enemy">
+    <event eventtype="4" ename="obj_EnemyParent">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -81,8 +81,10 @@ y = obj_Player.y;
 // attack collided with the enemy
 if ((image_index == 0 || image_index == 1 || image_index == 2) &amp;&amp; !hit){
     hit = true; // don't repeat this code again
-    score += 1;  
-    audio_emit = audio_emitter_create();
+    score += 1;
+    with (other)
+        hp--; // decrease life by 1;
+    var audio_emit = audio_emitter_create();
     audio_emitter_gain(audio_emit, 0.10);
     audio_emitter_pitch(audio_emit, 1);
     audio_play_sound_on(audio_emit, snd_player_slash, false, 10);

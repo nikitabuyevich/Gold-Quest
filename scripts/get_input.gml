@@ -3,13 +3,14 @@
 Get input from keyboard or controller
 */
 
-right = keyboard_check(vk_right) || keyboard_check(ord('D'));
-left = keyboard_check(vk_left) || keyboard_check(ord('A'));
-ladder_up = keyboard_check(vk_up);
-interact = keyboard_check_pressed(ord('E'));
-up = keyboard_check_pressed(vk_space);
-up_release = keyboard_check_released(vk_space);
-down = keyboard_check(vk_down);
+
+global.right = keyboard_check(global.keyRight);
+global.left = keyboard_check(global.keyLeft);
+global.ladder_up = keyboard_check(vk_up);
+global.interact = keyboard_check_pressed(ord('E'));
+global.up = keyboard_check_pressed(global.keyUp);
+global.up_release = keyboard_check_released(global.keyUp);
+global.down = keyboard_check(global.keyDown);
 
 
 

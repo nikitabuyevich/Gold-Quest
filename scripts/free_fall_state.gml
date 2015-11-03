@@ -5,12 +5,15 @@ Fall to the ground and move in the air,
 only colides with solid edges.
 */
 
-if ((right || left)) {
+if (global.right || global.left)
+      image_xscale = sign(global.right-global.left);
+
+if ((global.right || global.left)) {
     
     if (!pushing)
-        hSpd += (right-left)*global.accel;
+        hSpd += (global.right-global.left)*global.accel;
     else
-        hSpd = ((right-left)*maxSpd*global.blockPushSpeed);
+        hSpd = ((global.right-global.left)*maxSpd*global.blockPushSpeed);
     
     if (hSpd > maxSpd)
         hSpd = maxSpd;
@@ -20,8 +23,8 @@ if ((right || left)) {
 }
         
 // Horizontal Collisions
-if (place_meeting(x+hSpd, y, obj_edge_Solid)){
-    while (!place_meeting(x+sign(hSpd), y, obj_edge_Solid)){
+if (place_meeting(x+hSpd, y, obj_outsideSolid)){
+    while (!place_meeting(x+sign(hSpd), y, obj_outsideSolid)){
         x += sign(hSpd);
     }
     
@@ -30,8 +33,8 @@ if (place_meeting(x+hSpd, y, obj_edge_Solid)){
 x += hSpd;
 
 // Vertical Collisions
-if (place_meeting(x, y+vSpd, obj_edge_Solid)){
-    while (!place_meeting(x, y+sign(vSpd), obj_edge_Solid)){
+if (place_meeting(x, y+vSpd, obj_outsideSolid)){
+    while (!place_meeting(x, y+sign(vSpd), obj_outsideSolid)){
         y += sign(vSpd); 
     }
     
@@ -42,7 +45,7 @@ if (place_meeting(x, y+vSpd, obj_edge_Solid)){
 y += vSpd;
 
 // Implementing gravity
-if (!place_meeting(x, y+1, obj_edge_Solid)){ // if we're in the air
+if (!place_meeting(x, y+1, obj_outsideSolid)){ // if we're in the air
     vSpd += global.grav;
     image_index = 2;
     sprite_index = spr_player_jump;

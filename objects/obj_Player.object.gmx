@@ -37,8 +37,8 @@ global.grav = 0.15; //gravity speed
 maxSpd = 1; //maximum speed possible
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
-maxJumpH = -3; //maximum jump height
-initialJumpH = -1.5; // initial jump height
+maxJumpH = -2.25; //maximum jump height
+initialJumpH = -1; // initial jump height
 global.rollDist = 2; // the distance to roll
 global.blockPushSpeed = 1; //how fast player pushes with a block
 global.attackspeed = 0.2; // players attack speed
@@ -140,7 +140,7 @@ script_execute(state);
             <string>/// enemy is on the ladder
 
 // player decides to get on ladder
-if (interact){
+if (global.interact){
     obj_Player.state = ladder_state;
     playerYOnLadder = obj_Player.y;
 }
@@ -172,7 +172,7 @@ if (interact){
 if (sprite_index == spr_player_attack_b_walk &amp;&amp; hSpd == 0)
     sprite_index = spr_player_attack_b_idle;
 
-if (!attacking &amp;&amp; !attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) {
+if (!attacking &amp;&amp; !attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling &amp;&amp; state!=ledge_grab_state) {
     attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
@@ -182,7 +182,7 @@ if (!attacking &amp;&amp; !attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling)
         sprite_index = spr_player_attack_a_walk;
     
 
-    with (instance_create(x, y, obj_PlayerAttackA)){
+    with (instance_create(x, y, obj_attackPlayerA)){
         image_xscale = obj_Player.image_xscale;
     }
     
@@ -190,7 +190,7 @@ if (!attacking &amp;&amp; !attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling)
     
 }
 
-if (!attacking &amp;&amp; attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) {
+if (!attacking &amp;&amp; attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling &amp;&amp; state!=ledge_grab_state) {
     attacking = true;
     image_speed = global.attackspeed;
     image_index = 0;
@@ -200,7 +200,7 @@ if (!attacking &amp;&amp; attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling) 
         sprite_index = spr_player_attack_b_walk;
     
 
-    with (instance_create(x, y, obj_PlayerAttackB)){
+    with (instance_create(x, y, obj_attackPlayerB)){
         image_xscale = obj_Player.image_xscale;
     }
 }
@@ -351,7 +351,7 @@ if (!rolling &amp;&amp; vSpd == 0) {
 attackedOnce = false;
 
 // if theres a push block in front of me, go into pushing state instantly
-if (place_meeting(x+((right-left)*maxSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block))
+if (place_meeting(x+((global.right-global.left)*maxSpd*global.blockPushSpeed), y, obj_parentPushableBlock))
     attacking = false;
 </string>
           </argument>

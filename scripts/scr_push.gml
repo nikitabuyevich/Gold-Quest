@@ -1,7 +1,7 @@
 /// scr_push
 
 // Horizontal push
-if (place_meeting(x+((right-left)*maxSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block)) {
+if (place_meeting(x+((global.right-global.left)*maxSpd*global.blockPushSpeed), y, obj_parentPushableBlock)) {
     
     if (!pushing){
         pushing = true;
@@ -13,7 +13,7 @@ if (place_meeting(x+((right-left)*maxSpd*global.blockPushSpeed), y, obj_inherit_
     
     
 
-    var block = instance_place(x+((right-left)*maxSpd*global.blockPushSpeed), y, obj_inherit_pushable_Block);
+    var block = instance_place(x+((global.right-global.left)*maxSpd*global.blockPushSpeed), y, obj_parentPushableBlock);
     with (block){
         scr_move(obj_Player.hSpd, 0);
     }

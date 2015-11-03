@@ -19,7 +19,7 @@ if (!place_meeting(x, y, obj_Ladder))
 
 hSpd = 0; // don't have any initial horizontal movement speed
     
-if (up || up_release){ 
+if (global.up || global.up_release){ 
     //vSpd = initialJumpH;
     state = free_fall_state;
 }    
@@ -31,8 +31,8 @@ if (thisLadder != noone)
     obj_Player.x = abs(thisLadder.x - obj_Ladder.sprite_width/(12+2));
 
 
-if (ladder_up || down){
-   vSpd += (down - ladder_up)*global.ladderClimbAccelSpd;
+if (global.ladder_up || global.down){
+   vSpd += (global.down - global.ladder_up)*global.ladderClimbAccelSpd;
    
    if (vSpd > global.ladderClimbMaxSpd)
       vSpd = global.ladderClimbMaxSpd;
@@ -49,8 +49,8 @@ if (!onLadderAnimation){
 }
 
 // Vertical Collisions
-if (place_meeting(x, y+vSpd, obj_edge_Solid)){
-    while (!place_meeting(x, y+sign(vSpd), obj_edge_Solid)){
+if (place_meeting(x, y+vSpd, obj_outsideSolid)){
+    while (!place_meeting(x, y+sign(vSpd), obj_outsideSolid)){
         y += sign(vSpd); 
     }
     
