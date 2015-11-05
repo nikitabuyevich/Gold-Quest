@@ -90,7 +90,7 @@ switch (room) {
     
         // Draw player healthbar
             for (var i=0; i &lt; maxhp/2; i++) {
-                draw_sprite_ext(spr_heart_full, 0, 12+i*15, 20, 1, 1, 0, c_black, 1);
+                draw_sprite_ext(spr_heart_empty, 0, 12+i*15, 20, 1, 1, 0, c_white, 1);
             }
             
             // Draw the hearts
@@ -112,12 +112,13 @@ switch (room) {
         
     
         if (debug){
-            draw_set_font(fnt_debug);
-            draw_text_colour(view_wview[0]/2, 10, "hSpd =:" +string(obj_Player.hSpd), c_lime, c_lime, c_lime, c_lime, 1);   
-            draw_text_colour(view_wview[0]/2, 20, "vSpd =:" +string(obj_Player.vSpd), c_lime, c_lime, c_lime, c_lime, 1);   
-            draw_text_colour(view_wview[0]/2, 30, "hp =:" +string(hp), c_lime, c_lime, c_lime, c_lime, 1);   
-            draw_text_colour(view_wview[0]/2, 40, "keyRight =:" +string(global.keyRight), c_lime, c_lime, c_lime, c_lime, 1);   
-
+            //draw_set_font(fnt_debug);
+            //draw_text_colour(view_wview[0]/2, 10, "hSpd =:" +string(obj_Player.hSpd), c_lime, c_lime, c_lime, c_lime, 1);   
+            //draw_text_colour(view_wview[0]/2, 20, "vSpd =:" +string(obj_Player.vSpd), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 00, "x =:" +string(obj_Player.x), c_lime, c_lime, c_lime, c_lime, 1);  
+            draw_text_colour(view_wview[0]/2, 10, "y =:" +string(obj_Player.y), c_lime, c_lime, c_lime, c_lime, 1);   
+           
+            
          } 
      
 

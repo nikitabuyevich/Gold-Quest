@@ -33,11 +33,15 @@
 global.accel = 0.135; //acceleration
 global.grav = 0.15; //gravity speed
 
+
+//Initiate Camera
+instance_create(x, y, obj_controlView);
+
 // Player attributes
 maxSpd = 1; //maximum speed possible
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
-maxJumpH = -2.25; //maximum jump height
+maxJumpH = -2.15; //maximum jump height
 initialJumpH = -1; // initial jump height
 global.rollDist = 2; // the distance to roll
 global.blockPushSpeed = 1; //how fast player pushes with a block
@@ -312,7 +316,7 @@ room_restart();
             <kind>1</kind>
             <string>/// Initialize roll
 
-if (!rolling &amp;&amp; vSpd == 0) {
+if (!rolling &amp;&amp; vSpd == 0 &amp;&amp; state != ledge_grab_state) {
     image_speed = 0.2;
     image_index = 0;
     mask_index = spr_player_mask_crouch; // change to crouch mask
@@ -353,31 +357,6 @@ attackedOnce = false;
 // if theres a push block in front of me, go into pushing state instantly
 if (place_meeting(x+((global.right-global.left)*maxSpd*global.blockPushSpeed), y, obj_parentPushableBlock))
     attacking = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// End the game
-
-game_end();
 </string>
           </argument>
         </arguments>

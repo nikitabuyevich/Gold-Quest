@@ -6,6 +6,7 @@
 - Ledge Grabing
 - Customizable Controls
 - Interactive Mennus
+- Pause screen
 - Gamepad support
 
 ## Instructions:

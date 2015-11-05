@@ -32,7 +32,7 @@ image_speed = 0.1;
 hp = 3; // life of snake
 maxHp = 3; // max life of snake
 sightRange = 13; // range at which the enemy sees the player
-
+snakeSpeed = 0.2; // control the movement speed of the snake
 // Choose which direction to head
 state = choose(snake_move_right_state, snake_move_left_state);
 </string>

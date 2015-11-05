@@ -49,6 +49,7 @@
     <sprites name="GUI Icons">
       <sprite>sprites\spr_heart_full</sprite>
       <sprite>sprites\spr_heart_half</sprite>
+      <sprite>sprites\spr_heart_empty</sprite>
     </sprites>
     <sprites name="Buttons">
       <sprite>sprites\spr_btn_start</sprite>
@@ -65,6 +66,12 @@
       <sprite>sprites\spr_mm_title</sprite>
       <sprite>sprites\spr_hbar</sprite>
       <sprite>sprites\spr_hslider</sprite>
+    </sprites>
+    <sprites name="Pause Menu">
+      <sprite>sprites\spr_pm_pause_screen</sprite>
+      <sprite>sprites\spr_pm_options</sprite>
+      <sprite>sprites\spr_pm_start</sprite>
+      <sprite>sprites\spr_pm_exit</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -124,7 +131,7 @@
       <object>objects\obj_Snake</object>
     </objects>
     <objects name="Main Menu">
-      <object>objects\obj_Title</object>
+      <object>objects\obj_GameTitle</object>
       <objects name="Buttons">
         <object>objects\obj_parentButton</object>
         <object>objects\obj_buttonStart</object>
@@ -152,6 +159,13 @@
         <object>objects\obj_musicHslider</object>
         <object>objects\obj_musicHbar</object>
       </objects>
+    </objects>
+    <objects name="Pause Menu">
+      <object>objects\obj_pmRoomController</object>
+      <object>objects\obj_pmController</object>
+    </objects>
+    <objects name="Controllers">
+      <object>objects\obj_controlView</object>
     </objects>
   </objects>
   <rooms name="rooms">
