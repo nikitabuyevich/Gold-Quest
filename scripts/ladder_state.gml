@@ -48,14 +48,15 @@ if (!onLadderAnimation){
     image_index = 0;   
 }
 
+
+
 // Vertical Collisions
 if (place_meeting(x, y+vSpd, obj_outsideSolid)){
     while (!place_meeting(x, y+sign(vSpd), obj_outsideSolid)){
-        y += sign(vSpd); 
+        y += sign(vSpd);
     }
     
     vSpd = 0;
-    
     state = move_state;
 }
 y += vSpd;

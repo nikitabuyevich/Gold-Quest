@@ -113,11 +113,11 @@ switch (room) {
     
         if (debug){
             //draw_set_font(fnt_debug);
-            //draw_text_colour(view_wview[0]/2, 10, "hSpd =:" +string(obj_Player.hSpd), c_lime, c_lime, c_lime, c_lime, 1);   
-            //draw_text_colour(view_wview[0]/2, 20, "vSpd =:" +string(obj_Player.vSpd), c_lime, c_lime, c_lime, c_lime, 1);   
-            draw_text_colour(view_wview[0]/2, 00, "x =:" +string(obj_Player.x), c_lime, c_lime, c_lime, c_lime, 1);  
-            draw_text_colour(view_wview[0]/2, 10, "y =:" +string(obj_Player.y), c_lime, c_lime, c_lime, c_lime, 1);   
-           
+            draw_text_colour(view_wview[0]/2, 10, "hSpd =:" +string(obj_Player.hSpd), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 20, "vSpd =:" +string(obj_Player.vSpd), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 30, "y =:" +string(obj_Player.y), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 40, "score =:" +string(score), c_lime, c_lime, c_lime, c_lime, 1);   
+
             
          } 
      

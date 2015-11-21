@@ -1,4 +1,4 @@
-# Adventure Platformer (no title yet)
+# Gold Quest
 #### Features:
 - Sword attacks
 - Rolling

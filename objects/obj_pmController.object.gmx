@@ -107,23 +107,32 @@ if (file_exists("pause-screen.png"))
             <kind>1</kind>
             <string>draw_sprite(spr_pm_pause_screen, 0, view_wview[0]/2, view_hview[0]/2);
 
+//Constant variables for where to position the buttons for the pause menu
+var spr_resume = spr_pm_resume;
+var spr_options = spr_pm_options;
+var spr_exit = spr_pm_exit;
+var startY = 81.5;
+var optionsY = 93.5;
+var exitY = 105.5;
+
+
 if (interest == "continue")
 {
-    draw_sprite(spr_pm_start, 1, view_wview[0]/2, view_hview[0]/2 - 10);
-    draw_sprite(spr_pm_options, 0, view_wview[0]/2, view_hview[0]/2 + 2);
-    draw_sprite(spr_pm_exit, 0, view_wview[0]/2, view_hview[0]/2 + 14);
+    draw_sprite(spr_resume, 1, view_wview[0]/2, startY);
+    draw_sprite(spr_options, 0, view_wview[0]/2, optionsY);
+    draw_sprite(spr_exit, 0, view_wview[0]/2, exitY);
 }
 else if (interest == "options")
 {
-    draw_sprite(spr_pm_start, 0, view_wview[0]/2, view_hview[0]/2 - 10);
-    draw_sprite(spr_pm_options, 1, view_wview[0]/2, view_hview[0]/2 + 2);
-    draw_sprite(spr_pm_exit, 0, view_wview[0]/2, view_hview[0]/2 + 14);
+    draw_sprite(spr_resume, 0, view_wview[0]/2, startY);
+    draw_sprite(spr_options, 1, view_wview[0]/2, optionsY);
+    draw_sprite(spr_exit, 0, view_wview[0]/2, exitY);
 }
 else if (interest == "exit")
 {
-    draw_sprite(spr_pm_start, 0, view_wview[0]/2, view_hview[0]/2 - 10);
-    draw_sprite(spr_pm_options, 0, view_wview[0]/2, view_hview[0]/2 + 2);
-    draw_sprite(spr_pm_exit, 1, view_wview[0]/2, view_hview[0]/2 + 14);
+    draw_sprite(spr_resume, 0, view_wview[0]/2, startY);
+    draw_sprite(spr_options, 0, view_wview[0]/2, optionsY);
+    draw_sprite(spr_exit, 1, view_wview[0]/2, exitY);
 }
 </string>
           </argument>

@@ -5,7 +5,8 @@ as close as possible towards it.
 */
 var hSpd = argument0;
 var vSpd = argument1;
-
+if (vSpd == 0)
+    y = round(y); // remove backed up decimal pixels
 
 // Horizontal Collisions
 if (place_meeting(x+hSpd, y, obj_parentSolid)){
@@ -22,7 +23,9 @@ x += hSpd;
 if (place_meeting(x, y+vSpd, obj_parentSolid)){
     while (!place_meeting(x, y+sign(vSpd), obj_parentSolid)){
         y += sign(vSpd);
+        score ++;
     }
     vSpd = 0;
+    
 }
 y += vSpd;
