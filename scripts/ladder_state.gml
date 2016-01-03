@@ -26,7 +26,6 @@ if (global.up || global.up_release){
     
 var thisLadder = instance_place(x, y, obj_Ladder);    
 
-
 if (thisLadder != noone)
     obj_Player.x = abs(thisLadder.x - obj_Ladder.sprite_width/(12+2));
 

@@ -28,7 +28,9 @@
             <string>// Takes a picture of the current gameplay and pauses the game
 instance_deactivate_all(true);
 
-interest = "continue";
+interest = "continue"; // start selection at continue
+
+menu = "optionsPage"; // start at options page
 </string>
           </argument>
         </arguments>
@@ -53,36 +55,7 @@ interest = "continue";
             <kind>1</kind>
             <string>// when pressing escape
 
-if (file_exists("pause-screen.png"))
-    file_delete("pause-screen.png");
-
 instance_activate_all();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// when game is over, delete the tempt screen shot
-
-if (file_exists("pause-screen.png"))
-    file_delete("pause-screen.png");
 </string>
           </argument>
         </arguments>
@@ -108,31 +81,44 @@ if (file_exists("pause-screen.png"))
             <string>draw_sprite(spr_pm_pause_screen, 0, view_wview[0]/2, view_hview[0]/2);
 
 //Constant variables for where to position the buttons for the pause menu
+var spr_select = spr_pm_select;
 var spr_resume = spr_pm_resume;
 var spr_options = spr_pm_options;
 var spr_exit = spr_pm_exit;
-var startY = 81.5;
-var optionsY = 93.5;
-var exitY = 105.5;
+
+var selectX = 135;
+var selectY = 86;
+
+var startY = 86;
+var optionsY = 98;
+var exitY = 110;
 
 
-if (interest == "continue")
-{
-    draw_sprite(spr_resume, 1, view_wview[0]/2, startY);
-    draw_sprite(spr_options, 0, view_wview[0]/2, optionsY);
-    draw_sprite(spr_exit, 0, view_wview[0]/2, exitY);
+if (menu == "optionsPage") {
+    if (interest == "continue")
+    { 
+        draw_sprite(spr_resume, 1, view_wview[0]/2, startY);
+        draw_sprite(spr_options, 0, view_wview[0]/2, optionsY);
+        draw_sprite(spr_exit, 0, view_wview[0]/2, exitY);
+        draw_sprite(spr_select, 0, selectX, selectY);
+    }
+    else if (interest == "options")
+    {
+        draw_sprite(spr_resume, 0, view_wview[0]/2, startY);
+        draw_sprite(spr_options, 1, view_wview[0]/2, optionsY);
+        draw_sprite(spr_exit, 0, view_wview[0]/2, exitY);
+        draw_sprite(spr_select, 0, selectX, selectY+12);
+    }
+    else if (interest == "exit")
+    {
+        draw_sprite(spr_resume, 0, view_wview[0]/2, startY);
+        draw_sprite(spr_options, 0, view_wview[0]/2, optionsY);
+        draw_sprite(spr_exit, 1, view_wview[0]/2, exitY);
+        draw_sprite(spr_select, 0, selectX, selectY+24);
+    }
 }
-else if (interest == "options")
-{
-    draw_sprite(spr_resume, 0, view_wview[0]/2, startY);
-    draw_sprite(spr_options, 1, view_wview[0]/2, optionsY);
-    draw_sprite(spr_exit, 0, view_wview[0]/2, exitY);
-}
-else if (interest == "exit")
-{
-    draw_sprite(spr_resume, 0, view_wview[0]/2, startY);
-    draw_sprite(spr_options, 0, view_wview[0]/2, optionsY);
-    draw_sprite(spr_exit, 1, view_wview[0]/2, exitY);
+else if (menu == ""){
+
 }
 </string>
           </argument>
@@ -273,11 +259,14 @@ if (interest == "continue")
 
 else if (interest == "options"){
     // do options stuff
+    scr_loadgame();
 }
     
 
-else if (interest == "exit")   
-    game_end();
+else if (interest == "exit"){
+    scr_savegame(); // save the game on exit
+    game_end();   
+}
 
 </string>
           </argument>

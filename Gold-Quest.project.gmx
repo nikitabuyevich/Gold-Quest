@@ -38,12 +38,14 @@
       <sprite>sprites\spr_block</sprite>
       <sprite>sprites\spr_ladder</sprite>
       <sprite>sprites\spr_edge_Solid</sprite>
+      <sprite>sprites\spr_slope</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy_parent</sprite>
       <sprites name="Snake">
         <sprite>sprites\spr_snake_walk</sprite>
         <sprite>sprites\spr_snake_attack</sprite>
+        <sprite>sprites\spr_snake_attack_INVIS</sprite>
       </sprites>
     </sprites>
     <sprites name="GUI Icons">
@@ -72,46 +74,225 @@
       <sprite>sprites\spr_pm_options</sprite>
       <sprite>sprites\spr_pm_resume</sprite>
       <sprite>sprites\spr_pm_exit</sprite>
+      <sprite>sprites\spr_pm_select</sprite>
     </sprites>
-    <sprites name="Town">
-      <sprite>sprites\spr_shop_a</sprite>
-      <sprite>sprites\spr_blacksmith</sprite>
-      <sprite>sprites\spr_clocktower</sprite>
-      <sprite>sprites\spr_inn</sprite>
-      <sprite>sprites\spr_markettent_a</sprite>
-      <sprite>sprites\spr_markettent_b</sprite>
-      <sprite>sprites\spr_witchtent</sprite>
-      <sprite>sprites\spri_knighttent</sprite>
-      <sprite>sprites\spri_well</sprite>
-      <sprite>sprites\spr_towndoor_outside_a</sprite>
-      <sprite>sprites\spri_barrel_a</sprite>
-      <sprite>sprites\spr_barrel_b</sprite>
-      <sprite>sprites\spr_flowerpot</sprite>
-      <sprite>sprites\spr_window_long</sprite>
-      <sprite>sprites\spr_window_tall</sprite>
-      <sprite>sprites\spr_window</sprite>
-      <sprite>sprites\spr_towndoor_inside_a</sprite>
-      <sprite>sprites\spr_torch_0</sprite>
-      <sprite>sprites\spr_bed</sprite>
-      <sprite>sprites\spr_stand_apple</sprite>
-      <sprite>sprites\spr_stand_carrot</sprite>
-      <sprite>sprites\spr_stand_lettuce</sprite>
-      <sprite>sprites\spr_stand_potato</sprite>
-      <sprite>sprites\spr_windmill</sprite>
-      <sprite>sprites\spr_windmill_sails</sprite>
-      <sprite>sprites\spr_haybale</sprite>
-      <sprite>sprites\spr_farmhouse</sprite>
-      <sprite>sprites\spr_home_a</sprite>
-      <sprite>sprites\spr_home_b</sprite>
-      <sprite>sprites\spr_home_c</sprite>
-      <sprite>sprites\spr_home_player</sprite>
-    </sprites>
-    <sprites name="Tiles">
-      <sprite>sprites\spr_square</sprite>
-      <sprites name="Dirt">
-        <sprite>sprites\spr_dirt_0</sprite>
+    <sprites name="NPCs">
+      <sprites name="Town">
+        <sprites name="Shopkeepers">
+          <sprites name="Shopkeeper A">
+            <sprite>sprites\spr_shopkeeper_a_talk</sprite>
+            <sprite>sprites\spr_shopkeeper_a_idle</sprite>
+          </sprites>
+          <sprites name="Shopkeeper B">
+            <sprite>sprites\spr_shopkeeperB_idle</sprite>
+            <sprite>sprites\spr_shopkeeperB_talk</sprite>
+          </sprites>
+          <sprites name="Shopkeeper C">
+            <sprite>sprites\spr_shopkeeperC_talk</sprite>
+            <sprite>sprites\spr_shopkeeperC_idle</sprite>
+            <sprite>sprites\spr_shopkeeperC_juggle</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="Chef">
+          <sprite>sprites\spr_chef</sprite>
+        </sprites>
+        <sprites name="Drinkers">
+          <sprites name="Drinker A">
+            <sprite>sprites\spr_drinkerA_idle</sprite>
+            <sprite>sprites\spr_drinkerA_drink</sprite>
+          </sprites>
+          <sprites name="Drinker B">
+            <sprite>sprites\spr_drinkerB_idle</sprite>
+            <sprite>sprites\spr_drinkerB_drink</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="Blacksmith">
+          <sprites name="Blacksmith A">
+            <sprite>sprites\spr_blacksmithA_idle</sprite>
+            <sprite>sprites\spr_blacksmithA_talk</sprite>
+            <sprite>sprites\spr_blacksmithA_hammer</sprite>
+          </sprites>
+          <sprites name="Blacksmith B">
+            <sprite>sprites\spr_blacksmithB_idle</sprite>
+            <sprite>sprites\spr_blacksmithB_talk</sprite>
+            <sprite>sprites\spr_blacksmithB_hammer</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="Sweeper">
+          <sprite>sprites\spr_sweeper_sweep</sprite>
+          <sprite>sprites\spr_sweeper_idle</sprite>
+        </sprites>
+        <sprites name="Barmaid">
+          <sprite>sprites\spr_barmaid_idle</sprite>
+          <sprite>sprites\spr_barmaid_talk</sprite>
+          <sprite>sprites\spr_barmaid_pour</sprite>
+        </sprites>
+        <sprite>sprites\spr_witch_idle</sprite>
       </sprites>
     </sprites>
+    <sprites name="Town">
+      <sprites name="Tents">
+        <sprite>sprites\spr_markettent_a</sprite>
+        <sprite>sprites\spri_knighttent</sprite>
+        <sprite>sprites\spr_witchtent_back</sprite>
+        <sprite>sprites\spr_witchtent</sprite>
+        <sprite>sprites\spr_markettent_b</sprite>
+      </sprites>
+      <sprites name="Buildings">
+        <sprite>sprites\spr_home_player</sprite>
+        <sprite>sprites\spr_shop_a</sprite>
+        <sprite>sprites\spr_windmill</sprite>
+        <sprite>sprites\spr_blacksmith</sprite>
+        <sprite>sprites\spr_windmill_sails</sprite>
+        <sprite>sprites\spr_clocktower</sprite>
+        <sprite>sprites\spr_home_a</sprite>
+        <sprite>sprites\spr_inn</sprite>
+        <sprite>sprites\spr_home_c</sprite>
+        <sprite>sprites\spr_farmhouse</sprite>
+        <sprite>sprites\spr_home_b</sprite>
+        <sprite>sprites\spr_castle</sprite>
+        <sprite>sprites\spr_watchtower</sprite>
+        <sprite>sprites\spr_clock</sprite>
+        <sprite>sprites\spri_well</sprite>
+      </sprites>
+      <sprites name="Doors">
+        <sprite>sprites\spr_towndoor_inside_a</sprite>
+        <sprite>sprites\spr_towndoor_outside_a</sprite>
+        <sprite>sprites\spr_castledoorA_0</sprite>
+        <sprite>sprites\spr_castledoorA_1</sprite>
+        <sprite>sprites\spr_castledoorA_2</sprite>
+        <sprite>sprites\spr_castledoorB_0</sprite>
+        <sprite>sprites\spr_castledoorB_1</sprite>
+        <sprite>sprites\spr_castledoorB_2</sprite>
+        <sprite>sprites\spr_castledoorA_frame</sprite>
+        <sprite>sprites\spr_castledoorB_frame</sprite>
+      </sprites>
+      <sprites name="Windows">
+        <sprite>sprites\spr_window</sprite>
+        <sprite>sprites\spr_window_long</sprite>
+        <sprite>sprites\spr_window_tall</sprite>
+        <sprite>sprites\spr_castle_window_spade</sprite>
+        <sprite>sprites\spr_castle_window</sprite>
+        <sprite>sprites\spr_castle_window_heart</sprite>
+        <sprite>sprites\spr_castle_window_club</sprite>
+        <sprite>sprites\spr_castle_window_diamond</sprite>
+        <sprite>sprites\spr_castle_window_small</sprite>
+      </sprites>
+      <sprites name="Furniture and Inside">
+        <sprite>sprites\spr_chair_left</sprite>
+        <sprite>sprites\spr_chair_right</sprite>
+        <sprite>sprites\spr_innsign_1</sprite>
+        <sprite>sprites\spr_bed</sprite>
+        <sprite>sprites\spr_counter</sprite>
+        <sprite>sprites\spr_chimney</sprite>
+        <sprite>sprites\spr_flowerpot</sprite>
+        <sprite>sprites\spr_innsign_2</sprite>
+        <sprite>sprites\spr_innsign_3</sprite>
+        <sprite>sprites\spr_table_0</sprite>
+        <sprite>sprites\spr_table_1</sprite>
+        <sprite>sprites\spr_keg</sprite>
+        <sprite>sprites\spr_inn_kitchen</sprite>
+        <sprite>sprites\spr_spiderweb_left</sprite>
+        <sprite>sprites\spr_spiderweb_right</sprite>
+        <sprite>sprites\spr_castle_carpet</sprite>
+      </sprites>
+      <sprites name="Outside">
+        <sprite>sprites\spri_barrel_a</sprite>
+        <sprite>sprites\spr_barrel_b</sprite>
+        <sprite>sprites\spr_stand_apple</sprite>
+        <sprite>sprites\spr_stand_carrot</sprite>
+        <sprite>sprites\spr_stand_potato</sprite>
+        <sprite>sprites\spr_stand_lettuce</sprite>
+        <sprite>sprites\spr_haybale</sprite>
+        <sprite>sprites\spr_flag</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Tiles (Solid)">
+      <sprite>sprites\spr_square</sprite>
+      <sprites name="Dirt &amp; Soil">
+        <sprite>sprites\spr_dirt_0</sprite>
+        <sprite>sprites\spr_soil</sprite>
+      </sprites>
+      <sprites name="Cobblestone">
+        <sprite>sprites\spr_pave</sprite>
+        <sprite>sprites\spr_pave_left</sprite>
+        <sprite>sprites\spr_pave_right</sprite>
+      </sprites>
+      <sprites name="Room Edges">
+        <sprite>sprites\spr_ceiling_0</sprite>
+        <sprite>sprites\spr_ceiling_1</sprite>
+        <sprite>sprites\spr_ceiling_left</sprite>
+        <sprite>sprites\spr_ceiling_right</sprite>
+        <sprite>sprites\spr_floor_0</sprite>
+        <sprite>sprites\spr_floor_1</sprite>
+        <sprite>sprites\spr_floor_left</sprite>
+        <sprite>sprites\spr_floor_right</sprite>
+        <sprite>sprites\spr_wall_left</sprite>
+        <sprite>sprites\spr_wall_right</sprite>
+        <sprite>sprites\spr_floor_b</sprite>
+      </sprites>
+      <sprites name="Ledges">
+        <sprites name="Ledge B (Small)">
+          <sprites name="Castle">
+            <sprite>sprites\spr_ledgeB_castle</sprite>
+            <sprite>sprites\spr_ledgeB_castle_left</sprite>
+            <sprite>sprites\spr_ledgeB_castle_right</sprite>
+          </sprites>
+        </sprites>
+      </sprites>
+      <sprite>sprites\spr_witchtent_floor</sprite>
+      <sprites name="Castle Floor">
+        <sprite>sprites\spr_tile_castle_bottom</sprite>
+        <sprite>sprites\spr_tile_castle_bottomleft</sprite>
+        <sprite>sprites\spr_tile_castle_bottomright</sprite>
+        <sprite>sprites\spr_tile_castle_left</sprite>
+        <sprite>sprites\spr_tile_castle_right</sprite>
+        <sprite>sprites\spr_tile_castle_topleft</sprite>
+        <sprite>sprites\spr_tile_castle_topright</sprite>
+        <sprite>sprites\spr_tile_castle_top</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Title Screen">
+      <sprite>sprites\spr_title</sprite>
+      <sprite>sprites\spr_titlecoin_left</sprite>
+      <sprite>sprites\spr_titlecoin_right</sprite>
+    </sprites>
+    <sprites name="Interactables">
+      <sprites name="Doors">
+        <sprite>sprites\spr_witchtent_door</sprite>
+      </sprites>
+      <sprites name="Ladders">
+        <sprite>sprites\spr_ladder_inn</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Light Sources">
+      <sprite>sprites\spr_streetlamp</sprite>
+      <sprite>sprites\spr_torch_0</sprite>
+    </sprites>
+    <sprites name="Pushable Blocks">
+      <sprite>sprites\spr_crate</sprite>
+    </sprites>
+    <sprites name="Stairs">
+      <sprites name="Wood">
+        <sprite>sprites\spr_stairswood_right_0</sprite>
+        <sprite>sprites\spr_stairswood_left_0</sprite>
+        <sprite>sprites\spr_stairswood_left_1</sprite>
+        <sprite>sprites\spr_stairswood_right_1</sprite>
+        <sprite>sprites\spr_stairswood_left_2</sprite>
+        <sprite>sprites\spr_stairswood_right_2</sprite>
+      </sprites>
+      <sprites name="Castle">
+        <sprite>sprites\spr_stair_castleB_left</sprite>
+        <sprite>sprites\spr_stair_castleB_bottomleft</sprite>
+        <sprite>sprites\spr_stair_castleB_topleft</sprite>
+        <sprite>sprites\spr_stair_castleB_underleft</sprite>
+        <sprite>sprites\spr_stair_castleB_right</sprite>
+        <sprite>sprites\spr_stair_castleB_bottomright</sprite>
+        <sprite>sprites\spr_stair_castleB_topright</sprite>
+        <sprite>sprites\spr_stair_castleB_underright</sprite>
+      </sprites>
+    </sprites>
+    <sprite>sprites\spr_fish_swim</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_placeholder</background>
@@ -122,12 +303,13 @@
       <background>background\bg_sound</background>
     </backgrounds>
     <background>background\background4</background>
-    <backgrounds name="Tiles">
+    <backgrounds name="Tiles (Non Solid)">
       <backgrounds name="Kingdom">
-        <background>background\tile_interior</background>
         <background>background\tile_bush</background>
         <background>background\tile_cobblestone</background>
         <background>background\tile_farmland</background>
+        <background>background\tile_interior</background>
+        <background>background\tile_castle</background>
       </backgrounds>
     </backgrounds>
   </backgrounds>
@@ -156,7 +338,14 @@
       <script>scripts\scr_button_bobber.gml</script>
       <script>scripts\scr_settings.gml</script>
     </scripts>
+    <scripts name="Save/Load">
+      <script>scripts\scr_savegame.gml</script>
+      <script>scripts\scr_loadgame.gml</script>
+    </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shader0.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
     <font>fonts\fnt_default</font>
@@ -174,10 +363,15 @@
       <object>objects\obj_Ladder</object>
       <object>objects\obj_outsideSolid</object>
       <object>objects\obj_Background</object>
+      <object>objects\obj_parentSlope</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_parentEnemy</object>
-      <object>objects\obj_Snake</object>
+      <object>objects\obj_statsEnemies</object>
+      <objects name="Snake">
+        <object>objects\obj_Snake</object>
+        <object>objects\obj_attackSnake</object>
+      </objects>
     </objects>
     <objects name="Main Menu">
       <object>objects\obj_GameTitle</object>
@@ -217,40 +411,169 @@
       <object>objects\obj_controlView</object>
     </objects>
     <objects name="Town">
-      <object>objects\obj_shop_a</object>
-      <object>objects\obj_blacksmith</object>
-      <object>objects\obj_clocktower</object>
-      <object>objects\obj_inn</object>
-      <object>objects\obj_markettent_a</object>
-      <object>objects\obj_markettent_b</object>
-      <object>objects\obj_witchtent</object>
-      <object>objects\obj_knighttent</object>
-      <object>objects\obj_towndoor_a</object>
-      <object>objects\obj_well</object>
-      <object>objects\obj_barrel_a</object>
-      <object>objects\obj_barrel_b</object>
-      <object>objects\obj_flowerpot</object>
-      <object>objects\obj_window_long</object>
-      <object>objects\obj_window_tall</object>
-      <object>objects\obj_window</object>
-      <object>objects\obj_towndoor_inside_a</object>
-      <object>objects\obj_torch_0</object>
-      <object>objects\obj_stand_apple</object>
-      <object>objects\obj_stand_carrot</object>
-      <object>objects\obj_stand_lettuce</object>
-      <object>objects\obj_stand_potato</object>
-      <object>objects\obj_bed</object>
-      <object>objects\obj_windmill</object>
-      <object>objects\obj_windmill_sails</object>
-      <object>objects\obj_haybale</object>
-      <object>objects\obj_farmhouse</object>
-      <object>objects\obj_home_a</object>
-      <object>objects\obj_home_b</object>
-      <object>objects\obj_home_c</object>
-      <object>objects\obj_home_player</object>
+      <objects name="Buildings">
+        <object>objects\obj_home_c</object>
+        <object>objects\obj_home_a</object>
+        <object>objects\obj_shop_a</object>
+        <object>objects\obj_inn</object>
+        <object>objects\obj_clocktower</object>
+        <object>objects\obj_blacksmith</object>
+        <object>objects\obj_windmill_sails</object>
+        <object>objects\obj_windmill</object>
+        <object>objects\obj_farmhouse</object>
+        <object>objects\obj_home_b</object>
+        <object>objects\obj_home_player</object>
+        <object>objects\obj_castle</object>
+        <object>objects\obj_watchtower</object>
+        <object>objects\obj_clock</object>
+        <object>objects\obj_well</object>
+      </objects>
+      <objects name="Tents">
+        <object>objects\obj_markettent_b</object>
+        <object>objects\obj_witchtent</object>
+        <object>objects\obj_knighttent</object>
+        <object>objects\obj_markettent_a</object>
+        <object>objects\obj_witchtent_back</object>
+      </objects>
+      <objects name="Doors &amp; Windows">
+        <object>objects\obj_window_long</object>
+        <object>objects\obj_window_tall</object>
+        <object>objects\obj_window</object>
+        <object>objects\obj_towndoor_inside_a</object>
+        <object>objects\obj_towndoor_a</object>
+        <object>objects\obj_castledoor_A</object>
+        <object>objects\obj_castledoor_B</object>
+        <object>objects\obj_castlewindow</object>
+        <object>objects\obj_castlewindow_spade</object>
+        <object>objects\obj_castlewindow_heart</object>
+        <object>objects\obj_castlewindow_club</object>
+        <object>objects\obj_castlewindow_diamond</object>
+        <object>objects\obj_castlewindow_small</object>
+        <object>objects\obj_castledoorA_frame</object>
+        <object>objects\obj_castledoorB_frame</object>
+      </objects>
+      <objects name="Outside">
+        <object>objects\obj_haybale</object>
+        <object>objects\obj_stand_carrot</object>
+        <object>objects\obj_barrel_a</object>
+        <object>objects\obj_stand_apple</object>
+        <object>objects\obj_stand_lettuce</object>
+        <object>objects\obj_barrel_b</object>
+        <object>objects\obj_flowerpot</object>
+        <object>objects\obj_stand_potato</object>
+        <object>objects\obj_flag</object>
+      </objects>
+      <objects name="Inside">
+        <object>objects\obj_bed</object>
+        <object>objects\obj_chair_left</object>
+        <object>objects\obj_chair_right</object>
+        <object>objects\obj_innsign_1</object>
+        <object>objects\obj_innsign_2</object>
+        <object>objects\obj_innsign_3</object>
+        <object>objects\obj_counter</object>
+        <object>objects\obj_chimney</object>
+        <object>objects\obj_table_0</object>
+        <object>objects\obj_table_1</object>
+        <object>objects\obj_keg</object>
+        <object>objects\obj_inn_kitchen</object>
+        <object>objects\obj_spiderweb_left</object>
+        <object>objects\obj_spiderweb_right</object>
+        <object>objects\obj_castle_carpet</object>
+      </objects>
     </objects>
-    <objects name="Tiles">
+    <objects name="Tiles (Solid)">
       <object>objects\obj_square</object>
+      <objects name="Town Pavement">
+        <object>objects\obj_pave</object>
+        <object>objects\obj_pave_left</object>
+        <object>objects\obj_pave_right</object>
+      </objects>
+      <objects name="Dirt &amp; Soil">
+        <object>objects\obj_dirt0</object>
+        <object>objects\obj_soil</object>
+      </objects>
+      <objects name="Room Edges">
+        <object>objects\obj_ceiling</object>
+        <object>objects\obj_ceiling_left</object>
+        <object>objects\obj_ceiling_right</object>
+        <object>objects\obj_floor</object>
+        <object>objects\obj_floor_left</object>
+        <object>objects\obj_floor_right</object>
+        <object>objects\obj_wall_left</object>
+        <object>objects\obj_wall_right</object>
+        <object>objects\obj_floor_b</object>
+      </objects>
+      <objects name="Ledges">
+        <objects name="Ledge B (Small)">
+          <object>objects\obj_ledgeB_castle</object>
+          <object>objects\obj_ledgeB_castle_left</object>
+          <object>objects\obj_ledgeB_castle_right</object>
+        </objects>
+      </objects>
+      <object>objects\obj_witchtent_floor</object>
+      <objects name="Castle">
+        <object>objects\obj_tile_castle_bottom</object>
+        <object>objects\obj_tile_castle_bottomleft</object>
+        <object>objects\obj_tile_castle_bottomright</object>
+        <object>objects\obj_tile_castle_left</object>
+        <object>objects\obj_tile_castle_right</object>
+        <object>objects\obj_tile_castle_topleft</object>
+        <object>objects\obj_tile_castle_topright</object>
+        <object>objects\obj_tile_castle_top</object>
+      </objects>
+    </objects>
+    <objects name="Title Screen">
+      <object>objects\obj_title</object>
+      <object>objects\obj_titlecoin_left</object>
+      <object>objects\obj_titlecoin_right</object>
+    </objects>
+    <objects name="NPCs">
+      <objects name="Town People">
+        <object>objects\obj_shopkeeperA</object>
+        <object>objects\obj_shopkeeperB</object>
+        <object>objects\obj_shopkeeperC</object>
+        <object>objects\obj_chef</object>
+        <object>objects\obj_drinkerA</object>
+        <object>objects\obj_drinkerB</object>
+        <object>objects\obj_blacksmithA</object>
+        <object>objects\obj_blacksmithB</object>
+        <object>objects\obj_sweeper</object>
+        <object>objects\obj_barmaid</object>
+        <object>objects\obj_witch</object>
+      </objects>
+    </objects>
+    <objects name="Interactables">
+      <objects name="Doors">
+        <object>objects\obj_witchtent_door</object>
+      </objects>
+      <objects name="Ladders">
+        <object>objects\obj_ladder_inn</object>
+      </objects>
+    </objects>
+    <objects name="Light Sources">
+      <object>objects\object108</object>
+      <object>objects\obj_streetlamp</object>
+      <object>objects\obj_torch_0</object>
+    </objects>
+    <objects name="Stairs">
+      <objects name="Wood">
+        <object>objects\obj_stairswood_right_0</object>
+        <object>objects\obj_stairswood_left_0</object>
+        <object>objects\obj_stairswood_left_1</object>
+        <object>objects\obj_stairswood_right_1</object>
+        <object>objects\obj_stairswood_left_2</object>
+        <object>objects\obj_stairswood_right_2</object>
+      </objects>
+      <objects name="Castle">
+        <object>objects\obj_stair_castleB_left</object>
+        <object>objects\obj_stair_castleB_bottomleft</object>
+        <object>objects\obj_stair_castleB_topleft</object>
+        <object>objects\obj_stair_castleB_underleft</object>
+        <object>objects\obj_stair_castleB_right</object>
+        <object>objects\obj_stair_castleB_bottomright</object>
+        <object>objects\obj_stair_castleB_topright</object>
+        <object>objects\obj_stair_castleB_underright</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -260,10 +583,23 @@
     <room>rooms\rm_Sound</room>
     <room>rooms\rm_Controls</room>
     <room>rooms\rm_1</room>
-    <room>rooms\rm_mainstreet</room>
-    <room>rooms\rm_shop_a</room>
-    <room>rooms\rm_castlestreet</room>
-    <room>rooms\rm_farm</room>
+    <room>rooms\rm_titlescreen</room>
+    <rooms name="Kingdom">
+      <room>rooms\rm_town__mainstreet</room>
+      <room>rooms\rm_town_farm</room>
+      <room>rooms\rm_town_castlestreet</room>
+      <rooms name="Insides">
+        <room>rooms\rm_shop_a</room>
+        <room>rooms\rm_witchtent</room>
+        <rooms name="Inn">
+          <room>rooms\rm_innA</room>
+          <room>rooms\rm_innB</room>
+        </rooms>
+      </rooms>
+      <rooms name="Castle">
+        <room>rooms\rm_castle_entrance</room>
+      </rooms>
+    </rooms>
   </rooms>
   <constants number="1">
     <constant name="GameTheme_Color">make_color_rgb(183, 224, 31)</constant>

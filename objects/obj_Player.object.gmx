@@ -48,6 +48,7 @@ global.blockPushSpeed = 1; //how fast player pushes with a block
 global.attackspeed = 0.2; // players attack speed
 global.ladderClimbAccelSpd = 0.05; // how fast player begins to climb
 global.ladderClimbMaxSpd = 0.5; // max speed at which he climbs at
+global.slopeCoef = 1; // the higher the number the taller structures he can climb
 
 // Player control variables
 rolledOnce = false; // forces to commit to roll
@@ -145,8 +146,13 @@ script_execute(state);
 
 // player decides to get on ladder
 if (global.interact){
-    obj_Player.state = ladder_state;
-    playerYOnLadder = obj_Player.y;
+    var thisLadder = instance_place(x, y, obj_Ladder);    
+    if (thisLadder != noone)
+        var tempX = abs(thisLadder.x - obj_Ladder.sprite_width/(12+2));
+    if (!place_meeting(tempX, y, obj_outsideSolid)){
+        obj_Player.state = ladder_state;
+        playerYOnLadder = obj_Player.y;
+    }
 }
 </string>
           </argument>

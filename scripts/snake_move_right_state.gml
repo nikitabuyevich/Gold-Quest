@@ -25,4 +25,4 @@ image_xscale = -1;
 
 // Move the snake
 
-x += snakeSpeed;
+x += moveSpeed;

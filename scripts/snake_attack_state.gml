@@ -1,8 +1,13 @@
 /// snake_attack_state
 
 // change to attack animation
-image_speed = 0.1;
+image_speed = attackSpeed;
 sprite_index = spr_snake_attack;
+
+with (instance_create(x, y, obj_sna)){
+        image_xscale = obj_Player.image_xscale;
+    }
+    
 
 // make snake face player always
 if (obj_Player.x < x)

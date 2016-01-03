@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>91</width>
-  <height>81</height>
+  <width>31</width>
+  <height>41</height>
   <data>images\tile_interior.png</data>
 </background>
