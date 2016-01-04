@@ -14,7 +14,8 @@
       <sprite>sprites\spr_player_crouch</sprite>
       <sprite>sprites\spr_player_idle</sprite>
       <sprite>sprites\spr_player_walk</sprite>
-      <sprite>sprites\spr_player_jump</sprite>
+      <sprite>sprites\spr_player_jump_b</sprite>
+      <sprite>sprites\spr_player_jump_a</sprite>
       <sprite>sprites\spr_player_roll</sprite>
       <sprite>sprites\spr_player_push</sprite>
       <sprite>sprites\spr_player_ladder</sprite>
@@ -39,6 +40,7 @@
       <sprite>sprites\spr_ladder</sprite>
       <sprite>sprites\spr_edge_Solid</sprite>
       <sprite>sprites\spr_slope</sprite>
+      <sprite>sprites\spr_platform</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy_parent</sprite>
@@ -197,7 +199,7 @@
         <sprite>sprites\spr_castle_carpet</sprite>
       </sprites>
       <sprites name="Outside">
-        <sprite>sprites\spri_barrel_a</sprite>
+        <sprite>sprites\spr_barrel_a</sprite>
         <sprite>sprites\spr_barrel_b</sprite>
         <sprite>sprites\spr_stand_apple</sprite>
         <sprite>sprites\spr_stand_carrot</sprite>
@@ -359,11 +361,14 @@
     </objects>
     <objects name="Level">
       <object>objects\obj_parentSolid</object>
-      <object>objects\obj_parentPushableBlock</object>
       <object>objects\obj_Ladder</object>
+      <object>objects\obj_parentPushableBlock</object>
       <object>objects\obj_outsideSolid</object>
+      <object>objects\obj_Platform</object>
       <object>objects\obj_Background</object>
-      <object>objects\obj_parentSlope</object>
+      <objects name="Placeholder">
+        <object>objects\obj_parentSlope</object>
+      </objects>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_parentEnemy</object>

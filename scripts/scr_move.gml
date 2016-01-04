@@ -32,7 +32,8 @@ if (place_meeting(x, y+vSpd, obj_parentSolid)){
     while (!place_meeting(x, y+sign(vSpd), obj_parentSolid)){
         y += sign(vSpd);
     }
-    vSpd = 0;
+   
+   vSpd = 0;
     
 }
 y += vSpd;

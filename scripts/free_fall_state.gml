@@ -48,7 +48,7 @@ y += vSpd;
 if (!place_meeting(x, y+1, obj_outsideSolid)){ // if we're in the air
     vSpd += global.grav;
     image_index = 2;
-    sprite_index = spr_player_jump;
+    sprite_index = spr_player_jump_b;
 }
     
 // if on the ground, go back to move state

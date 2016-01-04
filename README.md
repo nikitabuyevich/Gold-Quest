@@ -4,6 +4,7 @@
 - Rolling
 - Climbing on ladders
 - Ledge Grabing
+- Slopes
 - Customizable Controls
 - Interactive Mennus
 - Pause screen

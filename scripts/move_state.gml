@@ -10,10 +10,6 @@ if (sprite_index != spr_player_push){
     pushing = false;
 }
 
-if (sprite_index != spr_player_jump){
-    alarmStarted = false;
-}
-
 // Player is crouching
 if (stayCrouched || (global.down && !attacking && !rolling && !global.left && !global.right)){
     hSpd = 0;
@@ -43,28 +39,21 @@ if ((global.right || global.left) && !rolling) {
 
 // Implementing gravity
 if (!place_meeting(x, y+1, obj_parentSolid)){ // if we're in the air
+    notOnGround = true;
     vSpd += global.grav;
     
     if (!rolling){
         if (!attacking){
             // Player is in the air
-            image_speed = 0;              
-            sprite_index = spr_player_jump;
-            if (!alarmStarted){ 
-                alarm[0] = room_speed/9; // controls frame speed
-                alarmStarted = true;
-            }
-            if (vSpd < 0){
-                image_index = 0;
-                if (alarm[0] <= 0){
-                    image_index = 1; // with initial jump, go only to frames 1 to 2
-                }
-            } else
-                image_index = 2;
+            if (vSpd < 0)
+                sprite_index = spr_player_jump_a;
+            else
+                sprite_index = spr_player_jump_b;
+            
         }
         
         // Control the jump height
-        if (global.up_release && vSpd < initialJumpH) {
+        if ((global.up_release && vSpd < initialJumpH)) {
         
             if (place_meeting(x, y+vSpd, obj_parentSolid)){
                 while (!place_meeting(x, y+sign(vSpd), obj_parentSolid)){
@@ -79,7 +68,14 @@ if (!place_meeting(x, y+1, obj_parentSolid)){ // if we're in the air
 } else { // on the ground
     if (!rolling){
         if (!attacking){
-            vSpd = 0;
+            if (!global.jumpThruPlat) {
+               vSpd += global.grav; // add to gravity cause if jumping through mult. plats. it will not add grav. 
+               if (vSpd > 0) 
+                vSpd = 0;
+            } else {
+                global.jumpThruPlat = true;
+                vSpd = 0;
+            }
             
             // Jumping
             if (global.up) { 
@@ -87,21 +83,27 @@ if (!place_meeting(x, y+1, obj_parentSolid)){ // if we're in the air
                     //audio_play_sound(snd_jump, 5, false);
             }
             
+            if (vSpd == 0 && place_meeting(x, y+1, obj_parentSolid))
+                jumpAnimFinished = true;
+            
             // Player on the ground
-            if (hSpd == 0){
-                if (!crouching){
-                    image_speed = 0.1;
-                    if (sprite_index != spr_player_idle && !pushing)
-                        image_index = 0;
-                    sprite_index = spr_player_idle;
+            if (jumpAnimFinished) {
+                if (hSpd == 0 && vSpd == 0){
+                    if (!crouching || global.jumpedThrough){
+                        image_speed = 0.1;
+                        if (sprite_index != spr_player_idle && !pushing)
+                            image_index = 0;
+                        sprite_index = spr_player_idle;
+                    }
                 }
+                else {
+                    image_speed = 0.2;
+                    if (sprite_index != spr_player_walk && !pushing)
+                        image_index = 0;
+                    sprite_index = spr_player_walk;
+                } 
             }
-            else {
-                image_speed = 0.2;
-                if (sprite_index != spr_player_walk && !pushing)
-                    image_index = 0;
-                sprite_index = spr_player_walk;
-            } 
+            
         } 
     }
 } 

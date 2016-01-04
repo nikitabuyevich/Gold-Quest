@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-5</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_player_mask</maskName>
   <events>
@@ -33,7 +33,6 @@
 global.accel = 0.135; //acceleration
 global.grav = 0.15; //gravity speed
 
-
 //Initiate Camera
 instance_create(x, y, obj_controlView);
 
@@ -49,6 +48,7 @@ global.attackspeed = 0.2; // players attack speed
 global.ladderClimbAccelSpd = 0.05; // how fast player begins to climb
 global.ladderClimbMaxSpd = 0.5; // max speed at which he climbs at
 global.slopeCoef = 1; // the higher the number the taller structures he can climb
+global.titleAnimSpeed = 0.35;
 
 // Player control variables
 rolledOnce = false; // forces to commit to roll
@@ -61,36 +61,15 @@ pushing = false; // checks whether in pushing state or not
 onLadder = false; // checks whether in ladder state or not
 onLadderAnimation = false; // controls image_index reset
 onLadderAndSolid = false; // control ladder state
-alarmStarted = false; // controls jump animation
 crouching = false; // makes sure to not go into idle animation
 stayCrouched = false; // used for safety of mask switching
+jumpAnimFinished = false; // controls jumping plats.
+global.jumpThruPlat = true; // initialize to true
+global.jumpedThrough = false; // jumped through plat.
 
 //Scripts
 state = move_state;
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// used to control jump animation
 </string>
           </argument>
         </arguments>
@@ -120,6 +99,29 @@ get_input();
 script_execute(state);
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Platform">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>jumpAnimFinished = false;
 </string>
           </argument>
         </arguments>
@@ -219,6 +221,40 @@ if (!attacking &amp;&amp; attackedOnce &amp;&amp; !pushing &amp;&amp; !rolling &
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="77">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>x = 100;
+y = 100;
+
+
+if (room == rm_1)
+    room_goto(rm_town__mainstreet);
+if (room == rm_town__mainstreet)
+    room_goto(rm_town_castlestreet);
+if (room == rm_town_castlestreet)
+    room_goto(rm_town_farm);
+if (room == rm_town_farm)
+    room_goto(rm_1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="0">
       <action>
         <libid>1</libid>
@@ -297,7 +333,7 @@ if (crouching)
             <kind>1</kind>
             <string>/// Restart the level
 
-room_restart();
+game_restart();
 </string>
           </argument>
         </arguments>
