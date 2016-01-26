@@ -3,7 +3,7 @@
   <spriteName>spr_snake_walk</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-5</depth>
   <persistent>0</persistent>
   <parentName>obj_parentEnemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>

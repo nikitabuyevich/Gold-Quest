@@ -11,12 +11,11 @@ if (wall_at_left || ledge_at_left) {
 
 // Look for the player
 if (instance_exists(obj_Player)){
-    var dis = point_distance(x, y, obj_Player.x, obj_Player.y);
-    
-    // snake sees the player
-    if (dis < sightRange) {
+    // if player gets in certain range, make the snake go towards the player until its attack range
+    // and then go into the attack state
+
+    if (foundPlayer)
         state = snake_attack_state;
-    }
 }
 
 // Control the snake aprite

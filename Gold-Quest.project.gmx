@@ -197,6 +197,7 @@
         <sprite>sprites\spr_spiderweb_left</sprite>
         <sprite>sprites\spr_spiderweb_right</sprite>
         <sprite>sprites\spr_castle_carpet</sprite>
+        <sprite>sprites\spr_throne</sprite>
       </sprites>
       <sprites name="Outside">
         <sprite>sprites\spr_barrel_a</sprite>
@@ -344,6 +345,9 @@
       <script>scripts\scr_savegame.gml</script>
       <script>scripts\scr_loadgame.gml</script>
     </scripts>
+    <scripts name="Debug">
+      <script>scripts\scr_check_commands.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader0.shader</shader>
@@ -484,6 +488,7 @@
         <object>objects\obj_spiderweb_left</object>
         <object>objects\obj_spiderweb_right</object>
         <object>objects\obj_castle_carpet</object>
+        <object>objects\obj_throne</object>
       </objects>
     </objects>
     <objects name="Tiles (Solid)">
@@ -580,6 +585,10 @@
         <object>objects\obj_stair_castleB_underright</object>
       </objects>
     </objects>
+    <objects name="Debug">
+      <object>objects\obj_Text</object>
+      <object>objects\obj_Debug</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_Boot</room>
@@ -588,6 +597,7 @@
     <room>rooms\rm_Sound</room>
     <room>rooms\rm_Controls</room>
     <room>rooms\rm_1</room>
+    <room>rooms\rm_duplicateThis</room>
     <room>rooms\rm_titlescreen</room>
     <rooms name="Kingdom">
       <room>rooms\rm_town__mainstreet</room>
@@ -603,6 +613,7 @@
       </rooms>
       <rooms name="Castle">
         <room>rooms\rm_castle_entrance</room>
+        <room>rooms\rm_throne</room>
       </rooms>
     </rooms>
   </rooms>

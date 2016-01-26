@@ -40,7 +40,7 @@ instance_create(x, y, obj_controlView);
 maxSpd = 1; //maximum speed possible
 hSpd = 0; //intiailize horizontal speed
 vSpd = 0; //initialize vertical speed
-maxJumpH = -2.15; //maximum jump height
+maxJumpH = -2; //maximum jump height
 initialJumpH = -1; // initial jump height
 global.rollDist = 2; // the distance to roll
 global.blockPushSpeed = 1; //how fast player pushes with a block
@@ -97,8 +97,6 @@ get_input();
 
 //execute state
 script_execute(state);
-
-
 </string>
           </argument>
         </arguments>
@@ -309,6 +307,40 @@ if (rolling)
 
 if (crouching)
     crouching = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// draw debugging helpers
+draw_self();
+if (global.debug) {
+    // draw the mask around object
+    draw_set_colour(c_red);
+    draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+    
+    // draw the state the object is in
+    draw_set_colour(c_white);
+    draw_text(bbox_right, bbox_top, state);
+    
+}
 </string>
           </argument>
         </arguments>
