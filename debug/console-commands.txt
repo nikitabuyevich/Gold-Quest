@@ -1,0 +1,2 @@
+window_set_size, w, h
+show_message, text
