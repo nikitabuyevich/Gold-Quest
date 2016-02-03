@@ -712,7 +712,6 @@
     <instance objName="obj_Platform" x="534" y="358" name="inst_BC1CD94C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform" x="539" y="352" name="inst_B9FA7BC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_title" x="167" y="286" name="inst_E850015F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Text" x="310" y="401" name="inst_0506440B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Debug" x="32" y="66" name="inst_FF4F6816" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

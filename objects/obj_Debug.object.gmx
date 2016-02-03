@@ -28,13 +28,111 @@
             <string>/// initialize variables
 
 // &lt;-- DEBUG -- &gt; //
-global.debug = false; //run debug
+global.debug = false; // intialize debug mode
 
-// intialize debug variables
-vw1 = noone;
-vw1Name = "";
-vw2 = noone;
-vw2Name = "";
+// intialize the console
+cmd = console_create();
+console_settings(cmd,",",true);
+console_preset(cmd);
+
+// open the suggested commands file and include it to the cmd
+scr_commands_help();
+// CONTROL VARIABLES
+originPlayer = false;
+movePlayer = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// destroy the console if it's not in use
+console_destroy(cmd);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// used to control objects that are disabled because of cmd
+if (originPlayer) {
+    obj_Player.x = 50;
+    obj_Player.y = 50;
+    obj_Player.vSpd = 0;
+    originPlayer = false;
+} else if (movePlayer) {
+    if (console_value_count(cmd) == 2) {
+        obj_Player.x = console_value(cmd, 1);
+        obj_Player.y = console_value(cmd, 2);
+    } else {
+        obj_Player.x = mouse_x;
+        obj_Player.y = mouse_y;
+    }
+    movePlayer = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// check for commands that are submitted and react
+
+// import the commands avaiable
+scr_commands();
+
+
+// toggle console visibility on/off with ~
+if (keyboard_check_pressed(192) || keyboard_check_pressed(220))
+    console_toggle(cmd);
 </string>
           </argument>
         </arguments>
@@ -58,41 +156,23 @@ vw2Name = "";
           <argument>
             <kind>1</kind>
             <string>/// draw debug view
-if (global.debug){
+if (global.debug &amp;&amp; instance_exists(obj_Player)){
             //draw_set_font(fnt_debug);
-            draw_text_colour(view_wview[0]/2, 10, "hSpd &gt; " + string(obj_Player.hSpd), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 10, "room &gt; " + string(room), c_lime, c_lime, c_lime, c_lime, 1);   
             draw_text_colour(view_wview[0]/2, 20, "vSpd &gt; " + string(obj_Player.vSpd), c_lime, c_lime, c_lime, c_lime, 1);   
-            draw_text_colour(view_wview[0]/2, 30, vw1Name + " &gt; " + string(vw1), c_lime, c_lime, c_lime, c_lime, 1);   
-            draw_text_colour(view_wview[0]/2, 40, vw2Name + " &gt; " + string(asset_get_index("obj_Player").hSpd), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 30, "x &gt; " + string(obj_Player.x), c_lime, c_lime, c_lime, c_lime, 1);   
+            draw_text_colour(view_wview[0]/2, 40, "y &gt; " + string(obj_Player.y), c_lime, c_lime, c_lime, c_lime, 1);   
 } 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="84">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// make debug true or false
 
-if (global.debug)
-    global.debug = false;
-else
-    global.debug = true;
+// draw console on screen once it's activated
+draw_set_font(fnt_debug);
+console_draw(cmd,50,
+make_color_rgb(38, 50, 56),
+make_color_rgb(55, 71, 79),
+make_color_rgb(161, 218, 237),
+make_color_rgb(128, 203, 196),
+1);
+draw_set_font(fnt_default);
 </string>
           </argument>
         </arguments>

@@ -3,6 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="2" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound">
     <sounds name="Player">
@@ -346,7 +347,25 @@
       <script>scripts\scr_loadgame.gml</script>
     </scripts>
     <scripts name="Debug">
-      <script>scripts\scr_check_commands.gml</script>
+      <script>scripts\console_create.gml</script>
+      <script>scripts\console_settings.gml</script>
+      <script>scripts\console_draw.gml</script>
+      <script>scripts\console_toggle.gml</script>
+      <script>scripts\console_submit.gml</script>
+      <script>scripts\console_cmd.gml</script>
+      <script>scripts\console_get_cmd.gml</script>
+      <script>scripts\console_value.gml</script>
+      <script>scripts\console_text_open.gml</script>
+      <script>scripts\console_add.gml</script>
+      <script>scripts\console_destroy.gml</script>
+      <script>scripts\console_preset.gml</script>
+      <script>scripts\console_value_count.gml</script>
+      <scripts name="Commands">
+        <script>scripts\scr_commands.gml</script>
+        <script>scripts\scr_commands_help.gml</script>
+        <script>scripts\scr_origin_player.gml</script>
+        <script>scripts\scr_mask_around_object.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -355,6 +374,7 @@
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
     <font>fonts\fnt_default</font>
+    <font>fonts\fnt_small</font>
   </fonts>
   <objects name="objects">
     <objects name="Player">
@@ -586,7 +606,6 @@
       </objects>
     </objects>
     <objects name="Debug">
-      <object>objects\obj_Text</object>
       <object>objects\obj_Debug</object>
     </objects>
   </objects>

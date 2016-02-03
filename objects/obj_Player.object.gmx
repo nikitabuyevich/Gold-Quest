@@ -330,17 +330,7 @@ if (crouching)
           <argument>
             <kind>1</kind>
             <string>/// draw debugging helpers
-draw_self();
-if (global.debug) {
-    // draw the mask around object
-    draw_set_colour(c_red);
-    draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-    
-    // draw the state the object is in
-    draw_set_colour(c_white);
-    draw_text(bbox_right, bbox_top, state);
-    
-}
+scr_mask_around_object();
 </string>
           </argument>
         </arguments>
