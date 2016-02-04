@@ -27,6 +27,7 @@ git clone https://github.com/NikitaBuyevich/Gold-Quest.git
 ## Debug Commands
 To open the debug console hit the **tilde (~)** key.
 > **1/0** means input either **1** or **0**. **1 is true** and **0 is false**.
+
 > **i** stands for **integer**, so input **any number**.
 
 | Command | Description |
