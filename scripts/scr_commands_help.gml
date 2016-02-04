@@ -20,3 +20,9 @@ console_add(cmd, "room_start");
 
 // go to the room specified
 console_add(cmd, "room, i");
+
+// change the speed at which the player runs
+console_add(cmd, "player_speed, i");
+
+// change how tall the player jumps
+console_add(cmd, "player_jump, i");

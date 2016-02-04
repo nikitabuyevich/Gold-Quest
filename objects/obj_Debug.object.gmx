@@ -40,6 +40,8 @@ scr_commands_help();
 // CONTROL VARIABLES
 originPlayer = false;
 movePlayer = false;
+player_speed = false;
+player_jump = false;
 </string>
           </argument>
         </arguments>
@@ -101,6 +103,12 @@ if (originPlayer) {
         obj_Player.y = mouse_y;
     }
     movePlayer = false;
+} else if (player_speed) {
+    obj_Player.maxSpd = console_value(cmd, 1);
+    player_speed = false;
+} else if (player_jump) {
+    obj_Player.maxJumpH = -(console_value(cmd, 1));
+    player_jump = false;
 }
 </string>
           </argument>

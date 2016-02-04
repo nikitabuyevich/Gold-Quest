@@ -29,6 +29,18 @@ if (console_submit(cmd)) {
         alarm[0] = 1;
     }
     
+    // change the speed at which the player runs
+    else if (console_cmd(cmd, "player_speed")) {
+        player_speed = true;
+        alarm[0] = 1;
+    }
+    
+    // change how tall the player jumps
+    else if (console_cmd(cmd, "player_jump")) {
+        player_jump = true;
+        alarm[0] = 1;
+    }
+    
             // <== ROOMS == >
     
     // go to the room specified
