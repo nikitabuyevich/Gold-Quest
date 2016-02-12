@@ -44,6 +44,7 @@
       <sprite>sprites\spr_platform</sprite>
       <sprite>sprites\spr_invis_platform</sprite>
       <sprite>sprites\spr_invis_solid</sprite>
+      <sprite>sprites\spr_invis_stairs</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy_parent</sprite>
@@ -400,11 +401,10 @@
       <object>objects\obj_outsideSolid</object>
       <object>objects\obj_Platform</object>
       <object>objects\obj_Background</object>
-      <objects name="Placeholder">
-        <object>objects\obj_parentSlope</object>
-      </objects>
+      <object>objects\obj_parentSlope</object>
       <object>objects\obj_invisPlatform</object>
       <object>objects\obj_invisSolid</object>
+      <object>objects\obj_invisStairs</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_parentEnemy</object>

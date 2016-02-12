@@ -161,17 +161,6 @@
     <instance objName="obj_shopkeeperB" x="283" y="115" name="inst_D2868D0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shopkeeperC" x="359" y="97" name="inst_B64483C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_blacksmithA" x="656" y="115" name="inst_C576859A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisPlatform" x="381" y="113" name="inst_84C0E139" locked="0" code="" scaleX="93" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisPlatform" x="378" y="72" name="inst_67952F6F" locked="0" code="" scaleX="81" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisSolid" x="459" y="66" name="inst_1F28EF5C" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisPlatform" x="468" y="72" name="inst_A2A3BC4F" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisPlatform" x="387" y="36" name="inst_12CA6B59" locked="0" code="" scaleX="45" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisPlatform" x="313" y="103" name="inst_85780C7C" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisPlatform" x="298" y="103" name="inst_EF238AFE" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisPlatform" x="308" y="103" name="inst_A7DAAFA2" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisSolid" x="304" y="100" name="inst_ABA603CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisSolid" x="307" y="100" name="inst_163FF97A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_invisSolid" x="305" y="99" name="inst_32045B14" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tile_cobblestone" x="711" y="144" w="9" h="9" xo="11" yo="21" id="10000117" name="inst_39162F65" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
