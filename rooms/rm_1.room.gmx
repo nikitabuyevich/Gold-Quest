@@ -672,8 +672,6 @@
     <instance objName="obj_parentSlope" x="442" y="423" name="inst_B1892EB4" locked="0" code="" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parentSlope" x="454" y="421" name="inst_D146AD91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parentSlope" x="456" y="423" name="inst_5E4AFE03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Platform" x="479" y="413" name="inst_147A7088" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Platform" x="479" y="418" name="inst_126590E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform" x="483" y="406" name="inst_5ED0B381" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform" x="497" y="417" name="inst_0CB8CEE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Platform" x="497" y="412" name="inst_E46B54DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

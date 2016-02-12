@@ -14,7 +14,9 @@ if (console_submit(cmd)) {
     else if (console_cmd(cmd, "room_next")) { 
         if room_next(room) != -1 {
                 room_goto(room_next(room));
-        }
+        } else
+            room_goto(rm_1);
+            
         scr_origin_player();
     }
             
@@ -53,6 +55,12 @@ if (console_submit(cmd)) {
     // start back at the first room
     else if (console_cmd(cmd, "room_start")) {
         room_goto(rm_1);
+        scr_origin_player();
+    }
+    
+    // restart the room
+    else if (console_cmd(cmd, "room_restart")) {
+        room_goto(asset_get_index(room_get_name(room)));
         scr_origin_player();
     }
     

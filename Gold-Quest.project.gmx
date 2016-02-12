@@ -42,6 +42,8 @@
       <sprite>sprites\spr_edge_Solid</sprite>
       <sprite>sprites\spr_slope</sprite>
       <sprite>sprites\spr_platform</sprite>
+      <sprite>sprites\spr_invis_platform</sprite>
+      <sprite>sprites\spr_invis_solid</sprite>
     </sprites>
     <sprites name="Enemies">
       <sprite>sprites\spr_enemy_parent</sprite>
@@ -199,6 +201,7 @@
         <sprite>sprites\spr_spiderweb_right</sprite>
         <sprite>sprites\spr_castle_carpet</sprite>
         <sprite>sprites\spr_throne</sprite>
+        <sprite>sprites\spr_stand</sprite>
       </sprites>
       <sprites name="Outside">
         <sprite>sprites\spr_barrel_a</sprite>
@@ -254,6 +257,10 @@
         <sprite>sprites\spr_tile_castle_topleft</sprite>
         <sprite>sprites\spr_tile_castle_topright</sprite>
         <sprite>sprites\spr_tile_castle_top</sprite>
+        <sprite>sprites\spr_tile_castle_a</sprite>
+        <sprite>sprites\spr_tile_castle_b</sprite>
+        <sprite>sprites\spr_tile_castle_c</sprite>
+        <sprite>sprites\spr_tile_castle_d</sprite>
       </sprites>
     </sprites>
     <sprites name="Title Screen">
@@ -332,6 +339,9 @@
       <script>scripts\ladder_state.gml</script>
       <script>scripts\free_fall_state.gml</script>
       <script>scripts\ledge_grab_state.gml</script>
+      <scripts name="Scripts">
+        <script>scripts\scr_ledge_grab.gml</script>
+      </scripts>
     </scripts>
     <scripts name="Snake States">
       <script>scripts\snake_move_left_state.gml</script>
@@ -393,6 +403,8 @@
       <objects name="Placeholder">
         <object>objects\obj_parentSlope</object>
       </objects>
+      <object>objects\obj_invisPlatform</object>
+      <object>objects\obj_invisSolid</object>
     </objects>
     <objects name="Enemies">
       <object>objects\obj_parentEnemy</object>
@@ -509,6 +521,7 @@
         <object>objects\obj_spiderweb_right</object>
         <object>objects\obj_castle_carpet</object>
         <object>objects\obj_throne</object>
+        <object>objects\obj_stand</object>
       </objects>
     </objects>
     <objects name="Tiles (Solid)">
@@ -550,6 +563,10 @@
         <object>objects\obj_tile_castle_topleft</object>
         <object>objects\obj_tile_castle_topright</object>
         <object>objects\obj_tile_castle_top</object>
+        <object>objects\obj_tile_castle_a</object>
+        <object>objects\obj_tile_castle_b</object>
+        <object>objects\obj_tile_castle_c</object>
+        <object>objects\obj_tile_castle_d</object>
       </objects>
     </objects>
     <objects name="Title Screen">
@@ -616,25 +633,28 @@
     <room>rooms\rm_Sound</room>
     <room>rooms\rm_Controls</room>
     <room>rooms\rm_1</room>
-    <room>rooms\rm_duplicateThis</room>
     <room>rooms\rm_titlescreen</room>
     <rooms name="Kingdom">
-      <room>rooms\rm_town__mainstreet</room>
-      <room>rooms\rm_town_farm</room>
-      <room>rooms\rm_town_castlestreet</room>
-      <rooms name="Insides">
-        <room>rooms\rm_shop_a</room>
-        <room>rooms\rm_witchtent</room>
-        <rooms name="Inn">
-          <room>rooms\rm_innA</room>
-          <room>rooms\rm_innB</room>
-        </rooms>
-      </rooms>
       <rooms name="Castle">
         <room>rooms\rm_castle_entrance</room>
-        <room>rooms\rm_throne</room>
+        <room>rooms\rm_castle_throne</room>
+        <room>rooms\room18</room>
+      </rooms>
+      <rooms name="Town">
+        <room>rooms\rm_town__mainstreet</room>
+        <room>rooms\rm_town_farm</room>
+        <room>rooms\rm_town_castlestreet</room>
+        <rooms name="Insides">
+          <room>rooms\rm_shop_a</room>
+          <room>rooms\rm_witchtent</room>
+          <rooms name="Inn">
+            <room>rooms\rm_innA</room>
+            <room>rooms\rm_innB</room>
+          </rooms>
+        </rooms>
       </rooms>
     </rooms>
+    <room>rooms\rm_duplicateThis</room>
   </rooms>
   <constants number="1">
     <constant name="GameTheme_Color">make_color_rgb(183, 224, 31)</constant>

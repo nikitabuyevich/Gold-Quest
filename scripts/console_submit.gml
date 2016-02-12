@@ -161,12 +161,15 @@ if console[? "active"] {
                 case "window_set_fullscreen": 
                     if no = 1 then
                     window_set_fullscreen(real(c[1])); 
+                    console_toggle(console);
                 break;
-                case "room_restart": room_restart(); break;
+                //case "room_restart": room_restart(); break;
+                /*
                 case "room_speed": 
                     if no = 1 then room_speed = real(c[1]); 
                 break;
-                case "audio_stop_all": audio_stop_all(); break;
+                */
+                case "audio_stop_all": audio_stop_all(); console_toggle(console); break;
                 case "instance_create": 
                     if object_exists(asset_get_index(c[1])) {
                         if no = 3 then
@@ -174,10 +177,13 @@ if console[? "active"] {
                         else 
                         instance_create(mouse_x,mouse_y,asset_get_index(c[1]));
                     }
+                console_toggle(console);
                 break;
+                /*
                 case "screenshot": 
                     if no = 1 then background_save(c[? "bg"], c[1]); 
                 break;
+                */
             }
         }
         
