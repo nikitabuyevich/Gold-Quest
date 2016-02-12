@@ -54,7 +54,6 @@ To open the debug console hit the **control (Ctrl)** and **tilde (~)** key.
 - Sword attacks
 - Rolling
 - Climbing on ladders
-[comment]: <> (- Ledge Grabbing (removed, perhaps temporarily))
 - Slopes
 - Customizable Controls
 - Debug Console
